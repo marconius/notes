@@ -1,0 +1,111 @@
+CH3 LAN : Ethernet, VLAN, Spanning Tree
+CH4.1 Routage : généralités, statique, RIP
+CH4.2 Routage : OSPF (plus éfficace que RIP)
+Le chemin le plus court selon l'algo de Dijsktra. Via le coût … calculé avec type de connexion
+Chaque routeur ...
+Surveille activement l'état de toutes ses liaisons 
+Diffuse l ’information de routage à tous les nœuds du réseau, 
+Construit à partir de ces informations une carte topologique complète du réseau 
+envoie uniquement la portion de la table de routage qui décrit ses propres liens 
+base de données LS pour chaque région à laquelle il appartient 
+appartenant à la même région ont la même base de données 
+ID = Plus haute : router-id (1-255. 0 = non-candidat) @ IP LO ou @ IP d’une de ces interfaces 
+LSA (link-state advertisements) (changements) via multicast
+répartition de trafic possible si deux routes égales
+L’algorithme SPF est effectué dans chaque région 
+Régions
+ID (entre 0 – 4G) … backbone = 0 … toute région connectées au bb
+routeurs : Inerne (backbone si dans area 0), ABR, ASBR
+Coût (métrique) : sur tous les liens … = 10^8 / vitesse du lien
+commandes : (config-if)# bandwith … (config-if)#ip ospf cost … (config)# auto-cost reference bandwidth 
+Distance : 
+5 types de paquets OSPF (IP protocol #89)  :
+Hello : Utilisés pour former des adjacences entre routeurs 
+Envoyés en multicast 224.0.0.5 et destinés à toutes les interfaces de routeur 
+Envoyés en multicast 224.0.0.6 et destinés au DR et BDR 
+Intervalle d’envoi = 10s pour LAN et 30s pour NBMA (changé avec ospf hello-interval )
+Permettent de déterminer le DR et BDR » pour les accès broadcast et non broadcat 
+Database description , Paquet OSPF , Link-state request , Link-state update , Link-state ack 
+Types de réseau OSPF  : Broadcast Multi-Access, Non-Broadcast Multi-Access (NBMA), Point-to-Point 
+DR Routeurs désignés : = plus haute ID. Permet de réduire le trafic OSPF dans les réseaux de diffusion 
+Adjacence : avant transmission LSA, routeurs OSPF doivent découvrir voisins (enregistrés dans neighbor table avec état du lien)
+Meilleure route algo = route avec le plus petit coût , calcul basé sur algorithme de Dijkstra . LSA pour connaître coûts
+ex LSA  : Link 2: {Network 10.2.0.0/16, IP address 10.2.0.1, Type of network: { Serial  : {Cost of link: 20 , Neighbours: R2 }}}
+Stub : R-Int...# area n stub … Totally Stub :  R-Int...# area n stub, R-ABR...# area n stub no-summary (all this for LSA flow restriction)
+LSAs :
+LSA routeur (type 1)  :Généré par chaque routeur dans la région . Décrit le coût et l’état du lien à la région . Tous les liens du routeurs sont définis par une seule LSA .
+LSA réseau (type 2)  : Généré par les routeurs désignés . Décrit tous les routeurs attachés au réseau .
+LSA résumé (type 3 and type 4)  : Généré par les routeurs ABR .  Définit la destination en dehors de la région mais à l’intérieur du SA . Seules les routes intra-région sont diffusées dans la région backbone . utilisé quand destination est routeur ASBR 
+LSA externe (5) : Généré par les routeurs ASBR . Définit les routes vers une destination externe au SA . 
+2 types : E1: Considère le coût total jusqu’à la destination externe . E2: Considère le coût jusqu’à l’interface du routeur ASBR .
+Injection de LSAs dans région secondaire : LSAs résumé d’autres régions , Route par défaut, Liens externes 
+Injection de LSAs dans région Stub  : LSAs résumé d’autres régions , Route par défaut 0.0.0.0 , Pas de liens externes (LSA type 5) 
+Injection de LSAs dans région “Totally Stubby”  : Région 51 , Route par défaut 0.0.0.0 (uniquement )
+étapes configurer OSPF  : 0. (configurer les interfaces sur les réseaux avec commandes interface) 1. Déterminer les domaines auxquels chaque interface d ’un routeur doit appartenir. 2. Permettre le routage OSPF sur l’interface à l ’aide de la commande router ospf process-id. 3. Spécifier les interfaces sur lesquelles OSPF doit être activé et leur domaine respectif à l’aide de la commande network area. 
+Wildcard mask = masque de réseau invertie
+ACL
+La commande ip access-group associe une ACL à une interface en particulier (mode interface) . Seulement une ACL par interface par protocole par direction est permise . Commande de l’IOS  : ip access-group access-list-number {in|out} (access-list-number : le numéro d’ACL à associer à l’interface; in|out : filtrage en entrée ou en sortie. ) ex :
+Access-list 1 deny 132.208.135.100 
+Access-list 1 permit any 
+Interface ethernet 0/1 
+ip access-group 1 out (Deny all est implicite )
+ACL étendue : Access-list access-list-number {permit|deny} protocol source source- mask destination destination-mask [operator operand] [protocol-pecific- option] [established] .
+CHAPITRE 5 : PPP, FR
+Protocol PPP : liaisons point-à-point ,  fonctionnalités  : {support IP, IPX, Appletalk, …; compression headers, auth par PAP ou CHAP, det. Erreur }
+composants : NCP (Network control protocol) CHAP / PAP; compression, paquet PPP, adaptation, LCP (link control protocol)
+étapes (en ordre d'encapsulation) : Établir Config (LCP) ; Auth (PAP ou CHAP) ; Config du prot. réseau (NCP) ; Données ; Term connexion (LCP) 
+stuffing : Insertion d'un 0 après chaque 5 1s consécutifs à cause de HDLC
+fonctions LCP : configuration de la liaison (ex : config-ack); libération de la liaison (ex : term-req), maintenance de la liaison 
+Config paquets LCP : Type = 1 : négociation du MRU (“Maximum Receive Unit”) . Type = 3 : négociation du prot d’auth. Type = 4 : négociation du protocole de surveillance de la liaison. Type = 5 : négociation du nombre magique . Il y en a beaucoup d`autres
+auth : PAP(password auth prot). CHAP (Challenge handshake AP) : 3-way, info chiffré
+Protocols NCP : IPCP et autres moins utilisé : ATCP (Appletalk), IPX (IPXC'P)
+FRAME RELAY : Protocole à commutation de trames 
+Applications  : Interconnexion de réseaux LANs d’entreprise , Trasnport multiprotocole (IP, IPX, SNA, etc...) , Transport de trafic données et voix 
+Débits variable de 56kbps à 45Mbps 
+Migration vers MPLS/VPN
+trame : |DLCI dest (link identifier) 6| C/R(Command/response ) 1 |, EA(Ext Address ) 1 |, DLCI src 4 | FECN: Forward Explicit Congestion Notification 1 | BECN 1 | DE discard eleg 1 | EA 1 |
+Circtuits : PVC  : Connexion dédiée, établie de façon permanente qu’il y ait ou non des données à envoyer . SVC  : Connexion établie à la demande si données à envoyer 
+Commutation par DLCI entre DTE et DCE(commutateur FR)
+Association DLCI – Adresse IP  : Manuelle (Configuée par l’administrateur ) ou Dynamique (À l’aide du protocole Inverse ARP : I-ARP pour obtenir l’adresse IP à partir du DLCI ) es :
+RTA(config)# interface serial 0 
+RTA(config-if)# ip address 15.1.1.1 255.255.255.0 
+RTA(config-if)# encapsulation frame-relay 
+RTA(config-if)# frame-relay map ip 15.1.1.2 DLCI=101 
+Split Horizon permet pas aux mises à jour de routage reçues par une interface de sortir par la même interface . Solution : sous-interfaces (s 0/0.1)
+CH. 6.1 VPN → Réseau privé virtuel = Tunnel + Encryptage 
+Types de Tunnels  :
+Tunnel de couche 3  : IPSec (Internet Protocol Security) {Trafic IP seulement }, GRE (Generic Rte Encaps.)
+Tunnel de couche 2  : PPTP (Point-to-Point Tunnelling p) MS'96, (L2F) Layer 2 Forwarding) Cisco '96 , L2TP (Layer 2 Tunlg) PPTP+L2F 
+IPSec : IKE (Internet Key Exchange) : encr, auth (clé ou mot de p), security ass
+AH (Auth Header) : auth, error check, pas d'encryptage
+ESP (encapsulating security payload) : auth de l'origine, encryptage, deux modes : tunnel and transport
+mode tunnel : Le paquet d’origine est entièrement encapsulé donc entièrement protegé
+mode transport : Seul le segment de la couche transport est traité . @s hotes pas protégés
+étapes IKE 1. Routeur A veut échanger des données avec B . 2. Routeur A et B négocient une session IKE phase 1 . 3. Routeur A et B négocient une session IKE phase 2 .  4. Les données sont échangées via le tunnel IPSec . 5. Fin du tunnel IPSec 
+CH 6.1 MPLS
+Label  : Étiquette servant à identifier le paquet et à son acheminement 
+CE (Customer Edge Rtr)  : Routeur de bordure du client 
+E-LSR (Edge-Label Switch Router) = PE (Provider Edge router) : Rtr de bordure : assigne premier label à entrée du rés MPLS etenlève à  sortie
+LSR (Label Switching Router) = P (Provider Core Router)  : Routeur ou commutateur ATM du fournisseur de service qui traite les paquets en fonction du label 
+Forwarding Equivalence Class (FEC)  : Flot de paquets IP transmis sur le même chemin, traités de la même manière et identifiés par le même label . Les paquets appartenant à une même classe FEC sont traités de la même manière 
+Le chemin établi par MPLS appelé LSP (Label Switched Path) est emprunté par tous les datagrammes de ce flux 
+entête MPLS : | Label 20bits | EXP 3 | S 1 | TTL 8 | 
+MPLS VPN 
+Un VPN est une collection de sites partageant une table de routage commune 
+• Un site peut être dans plusieurs VPN 
+• Plusieurs instances de routage/acheminement dans les routeurs PE 
+VRF (Virutal Routing/Forwarding) 
+• Possibilité d'utilisation d'un adressage privé sur un réseau public. 
+Mais si 2 VPN ont un site en commun, l’adressage doit être unique dans ces 2 VP 
+Routeurs Virtuels (VRF)  : les routeurs PE ont capacité de gérer plusieurs tables de routage grâce à notion de VRF (VPN Ring and Forwarding). 
+La VRF permet d’isoler le trafic entre sites clients n’appartenant pas aux même VPN 
+Chaque VRF est désignée par un nom (par ex. RED, GREEN, VPN-A, etc.) sur les routeurs PE. 
+Chaque interface de PE reliée à un site client est rattachée à une VRF particulière. 
+Lors de la réception de paquets IP sur une interfaces client, le routeur PE procède examine la table de routage de la VRF à laquelle est rattachée l’interface, et donc ne consulte pas sa table de routage globale. 
+RD (Route Distinguisher)  : Pour distinguer les VPN utilisant les mêmes plages d’adressage, un identifiant appelé RD (Route Distinguisher) de 64 bits est ajouté à chaque sous- réseau IPv4 d’une VRF donnée .
+Une route VPNv4, formée d’un RD et d’un préfixe IPv4, s’écrit ainsi sous la forme RD:Subnet/Masque. Exemple : 100:1:100.10.5.5/32. 
+Lors de la création d’une VRF sur un PE, un RD doit être configuré. 
+Routage MPLS/VPN  : 1. Du site client (CE) vers le PE source via RIP, OSPF ou routage statique …  2. Entre le PE source et le PE destination via MP-iBGP ...  3. Du PE destination vers le site client (CE) via RIP, OSPF ou en routage statique 
+Acheminement de paquets MPLS/VPN  : Traitement du paquet par PE-2  : reçoit le paquet IP … Consulte la table du VPN … trouve le NH … ajoute un stack de label6 
+Le routeur « Penultimate PE » supprime le label IGP (Penultimate = Dernier routeur avant le PE )
+Traitement du paquet par PE-1  : Sélectionne la VRF à partir du label VPN … Détermine le NH (Montreal) … Supprime le label et achemine le paquet au bon VPN via le CE-1 (Montreal) s (IGP, VPN) 

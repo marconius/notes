@@ -1,0 +1,229 @@
+====== H11 - ECO1081 ======
+
+===== Ch. 1 - Dix Principes =====
+
+L'__ÉCONOMIE__ est l'étude de l'allocation des ressource (naturelles, matérielles, humaines, temporelles ... ) __rares__ (voir limitées) face à des besoins __illimités__
+
+ex. application : comment on fait les choix face à incitations
+
+**Certaine pointes** :
+
+Façons d'allocation des ressources : décentralisé -> MARCHÉ ou centralisé(état) -> PLAN
+
+  prix => signaux <= quantité
+
+exemples d’économies **plan** : état en guerre
+
+prix ne reflet pas toujours toute l'information ( ex. les taxes nécessaires pour couvrir coûts cachés de la production et de l'utilisation du pétrole )
+
+**Les modèles ** sont utilisé souvent pour créer rapport d'une hypothèse (ex. graphiques, résumes, mathématique ... ). Des modèles on peut avoir des **résultats** que représentent l'avenir et mennent à des **prévisions**
+
+//remarque : économistes et psychologues travaillent ensemble pour créer modèles plus réalistes //
+
+=== 10 Principes d’économie ===
+
+  - Les gens sont soumis à un arbitrage : Il faut (presque) toujours renoncer quelque chose pour avoir une autre. 
+  - Coût de renonciation : Le coût du bien es ce qu'on doit renoncer pour l'obtenir
+  - Les gens rationnels raison à la marge : ils prennent en considération le coût d'un changement dans le cas particulier au lieu du coût moyen ou géneralisé.
+  - Les gens réagissent à l'incitation
+  - Tous les échanges **librement consenties** améliorent le bien-être de tous
+  - Le marché représente en générale, une bonne façon d'organiser l'activité économique
+  - Les gouvernements améliore parfois les solutions de marché
+  - Le niveau de vie d'un pays dépend de son capacité à produire des biens et des services
+  - Les prix montent lorsque le gouvernement émet trop de monnaie
+  - Chômage vs. inflation : à court terme la société est soumise à un arbitrage entre l'inflation et le chomage
+
+===== Chapitre 2 - Les modèles base =====
+
+un premier modèle est ** le diagramme des flux circulaires **
+
+=== La courbe des possibilités de production - CPP ===
+
+Avec la **technologie donnée** (matérielle, naturelle, humains, ... ) on est capable de produire un montant limité de bien et service. La **CPP** représente tous les possibilités. Le coûts est mesuré en matériel. Ce n'a pas nécessaire de mesurer en argent
+
+**Ex. I** : la courbe est droite donc le coût de renonciation est constante
+
+Les points A et B son sur la courbe donc sont considéré **efficace** car tous les ressources disponibles sont utilisés
+
+Le point C n'est pas atteignable pour le moment
+
+Le point D n'est pas efficace
+
+**Ex. II** : dans ce exemples plus réaliste le coût de renonciation n'est pas constante. Au marges les coûts sont plus hauts (ex. il y-a un certaine portion des travailleurs qui sont hautement spécialisé dans la production de beurre et sont très inefficace dans la production de cannons.
+
+**Ex III** : Dans les années 90, une amélioration de technologies à augmenter la possibilité de production des ordinateurs. Par conséquences des meilleurs ordinateurs on pu augmneter la pp des automobiles est la production à automatiquement d'auto à augmenter à cause de la aug. d'ordis
+
+{{:cpp-exemples.png|}}
+===== CHAPITRE 3 =====
+
+Les gens qui fournissent les biens et services qu'on consume n'agissent ni pour notre bien ni par simple générosité
+
+EX. deux producteurs: un éleveur et un cultivateur de pomme de terre
+
+si éleveur de viande est pas bon à cultiver pommes de terre et cultivateur ne peut pas elever viande, alors facile a voir raison d'echanger
+
+si éleveur de viande est aussi meilleur que cultivateur a cultiver pommes de terre?
+
+ex. 
+^  ^ Minutes requis pour produire 1 kilo ^^ Quantité Produite ^^
+^:::^ Viande ^ Pmme de terre ^ Viande ^ pomme de terre ^
+| Fermier | 60min | 15 min | 8kg | 32kg |
+| éleveur | 20min | 10 min | 24kg | 48kg |
+
+**Possibilités de production**
+
+si pas d’échanges, CPP est égale a courbe de possibilité de production, ou chaque producteur consomme sa propre production. Eleveur consomme beaucoup et l’éleveur beaucoup moins
+
+avec échanges les producteurs se spécialisent dans la choses qu'ils peuvent produire plus efficacement. Ceci produit plus en total et si échanges son équitables, les deux aurons plus de produits.
+
+**L'avantage Comparatif**
+
+__L'avantage absolu__: la productivité d'une entité. Le producteur qui utilise le moins de facteurs de production pour produire un bien dispose d'un avantage absolu. Dans notre cas l'éleveur a l'avantage pour les deux produits
+
+__Le coût de renonciation__ d'un bien équivaut à ce à quoi il faut renoncer pour l'obtenir. Dans notre exemple: pour l'éleveur le cdr de 1 kilo de pommes de terres est 0.5k de viande, et pour le cultivateur le cdr de 1 kg de pomme de terres est 0.25kg de viande. Note: le cdr de pdr est inverse du cdr de viande
+
+^  ^ Coût de renonciation ^^
+^:::^ 1kg Viande ^ 1kg Pommes de terre ^
+| Fermier | 4kg de pommes de terre | 0.25kg de viande |
+| éleveur | 2kg de pommes de terre | 0.5kg de viande | 
+
+L'entité qui a le coût de renonciation le plus faible dispose d'un __avantage comparatif__.
+
+Note: le cdr d'un bien équivaut l'inverse du cdr de l'autre bien, donc __il est impossible que pour un personne de disposer d'un avantage comparatif pour les deux produits__ (sauf si les cdr sont exactement égales pour les deux producteurs. 
+
+**L'avantage corporatif et les échanges**
+
+Les deux entités peuvent bénéficier d'un coût d'achat moins cher que leur coût de renonciation. Dans notre exemple: L'éleveur achat 1kg de pdt pour 1/3kg de viande (moins cher que cdr de 1/2kg de viande) et le cultivateur achat un kg de viande pour 3kg de pdt (moins que cdr de 4kg de pdt) ... (voir tableau 3.1, 3.2, et 3.3)
+
+**N.B**: Pour que lees deux partenaires bénéficient de la spéecialisation et de l'echange, il faut que le prix soit situé entre les deux coûts de renonciation.
+
+===== Chapitre 4 =====
+
+== jan 26 - notes classe (transposées) ==
+
+==== Demande ====
+
+**Marché concurrentiel** 
+
+hypothèse:
+  - il y a un très grand nombre de vendeurs et acheteurs
+  - le même bien ou service doit être homogène
+  - pas de barrières a l'entrée ou à la sortie (vrai pour acheteurs et vendeurs)
+  - information parfaite (toute information à propos bien ou service est disponible)
+
+ex. Le prix (P) de l'or a augmenté beaucoup dernièrement. Le quantité d'or produit (Q) à aussi augmenté dans le même cadre de temps. A cause que ΔP est plus aigüe que ΔQ, on sait que l'augmentation du prix est du a un augmentation de __demande__
+
+**La demande de marché et la demande individu**
+
+La demande de marché est la somme de tous les demandes individuels. 
+
+exemple d'un __barème de demande__ 
+
+^  ^ Hélene ^ Dianne ^ MARCHÉ ^
+^ prix ^ Quantité de crème demandé ^^^
+| 0.00 | 12 | 7 | 19 |
+| 0.50 | 10 | 6 | 16 |
+| 1.00 | 8 | 5 | 13 |
+| 1.50 | 6 | 4 | 10 |
+| 2.00 | 4 | 3 | 7 |
+| 2.50 | 2 | 2 | 6 |
+| 3.00 | 0 | 1 | 1 |
+
+Facteurs qui affectent la demande:
+  - Le prix (mais ceci est un facteur pour calculer la courbe de demande, donc ne bouge pas la courbe a droite ou a gauche)
+  - Le revenue
+  - Le prix de besoins annexes
+  - Les goûts
+  - Les prix anticipé
+  - Le nombre d'acheteurs
+
+=== Déplacements de la courbe de la demande ===
+
+**Le revenue** : ...
+
+==== Offre ====
+== janvier 27  notes maisons ==
+
+** La quantité offert (O)** correspond a la qté que les venduers sont disposé a mettre à marché
+
+La rélation entre le prix (P) et la qté offerte correspod à **la loi de l'offre** qui est : tous chose étant égales, au feu et mesure que P augmente, O augmente aussi.
+
+on peut repréesenter P et Q dans avec le **barème d'offre** et graphiquement avec **courbe d'offre**
+
+ex. de barème d'offre : __Cornets de crème glacées__
+
+^ prix d'un cornet ^ Cornets offerts par ... ^^^
+^::: ^ Jean ^ benoît ^ MARCHÉ ^
+| 0.00 | 0 | 0 | 0 | 
+| 0.50 | 0 | 0 | 0 |
+| 1.00 | 1 | 0 | 1 |
+| 1.50 | 2 | 2 | 4 |
+| 2.00 | 3 | 4 | 7 |
+| 2.50 | 4 | 6 | 10 |
+| 3.00 | 5 | 8 | 13 |
+
+**Les Facteurs qui affecctent l'offre**
+
+**Le prix des intrants** : l'offre d'un bien est inveresement relié aux prix de ses intrants (ex. si P<sub>sucre</sub> augment O<sub>créme glacée</sub> diminue)
+
+**La technologie** : progrés tchnologique = augmentation d'O
+
+**Les anticipants** : si vendeur prevois un prix augmenter (dans le futur) offre deminuira (dans le présent), parceque il stockera son produit
+
+**Le nombre de vendeurs** : Plus de venduers -> offre marché plus grande -> courbe déplacé à la droite
+
+table de résume
+^ Variables influant sur l'offre ^ une modification de cette variable se traduit par ... ^
+| Prix | mouvement par le longue de la courbe d'offre |
+| prix des intrants | déplacementd de la courbe d'offre |
+| Technologie |   "   |
+| Aniticipations |   "   |
+| Nombre de vendeurs |   "   |
+
+==== Équilibre - offre et la demande ====
+
+== jan. 27 - notes maison ==
+
+**L'equilibre** est trouver quand on considère les courbes d'offre et de demande (du marché en ce cas) au même temps. Le point ou les deux courbes intersectent c'est l'**équilibre du marché**, et ceci détermine le **prix d'équilibre** et la **quantité d'équilibre**
+
+Le diséquilibre survient qunad prix d'un bien ne concure pas avec le prix d'équilibre.
+
+  * **Surplus** : à prix //x// l'offre est plus hautes que la demande
+  * **Pénurie** : à prix //y// la demande est plus haute que l'offre
+  * **__La loi de l'offre et de la demande__** : sur un marché, les prix d'un bien s'ajuste de façon à maintenir un égalité entre les qunatités offerts et les quantités demandées.
+
+**L'analyse en trois étapes des modifications de l’équilibre**
+
+  - **Quelle(s) coube(s)** : Est-ce que l'evenement provoque un déplacement de une des courbes ou des deux courbes
+  - **Direction de déplacement(s)** : Quelle est la direction du ou des déplacement(s) de la ou les courbe(s)
+  - **Nouveau prix d'équilibre** : en utilisant les courbes sur graphique or whatever, verifier ou le prix de l'équilibre est rendu
+
+Remarque - c'est le marché (donc les gens) qui ont le pouvoir absolu sur le prix des biens, par la choix de comment allouer leurbudgets doméstiques
+
+===== Ch 5. - elasticité =====
+
+**Élasticité-prix** mésure la sensibilité du la qunatité demandé ou offert (élasticité de la demande est plus important) au prix du bien. Sur la courbe, l'élasticité est réprésenté par la pente.
+
+Caractéristiques de l'élasticité de la demande
+
+  * L'existence des biens substituts augment génerallement **E<sub>p</sub>**
+  * Les Biens essentielles sont d'habitude inélastique par opposition aux bien de luxe
+  * Les contours : si un bien est très precis (coca cola) i y a beacoup de substituts, donc demande élastique. Tant que nourriture est très générale -> inélatique
+  * Si la part du revenu consacrée est large (ex. vêtements ) grande E<sub>p</sub>. ex2. le poivre petit E<sub>p</sub>
+  * demande plus élastique au longue terme que au court terme
+
+Calculer E<sub>p</sub>
+
+méthode officiel pour ECO1081-H11 - <math> E_{\mbox{ p a un point }}  =  | \frac{ -\triangle Q }{ \triangle P }  \times  \frac{ P }{ Q } | </math>
+
+**Les différents courbes de demande**
+
+  * ex A. E<sub>p</sub> -> 0 : parfaitement inélastique
+  * ex B. E<sub>p</sub>  < 1 ... inélastique
+  * ex C. E<sub>p</sub> = 1 : élasticité __unitaire__
+  * ex D. E<sub>p</sub> > 1 : élastique
+  * ex E. E<sub>p</sub> -> infini : parfaitement élastique
+  * recettes : (vue en E, F, et G) somme payé par acheteurs et reçu par vendeurs (**P**x**Q** à un point). Les recette sont maximisé quand élasticité est unitaire (recette //a//)
+  * ex F. __L'élasticité change__ le longue d'une courbe droite, aussi que les recettes 
+
+{{:elastic.png|}}

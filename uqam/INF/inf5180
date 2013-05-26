@@ -1,0 +1,139 @@
+====== Introduction ======
+
+Le cours //INF5180 - Conception et exploitation d'une base de données// est un cours donné à l'UQÀM.
+
+====== Conception schéma ======
+
+===== Conception schéma - Niveau Externe =====
+
+...
+
+===== Conception schéma - Niveau Interne ======
+
+...
+
+=== Heuristiques ===
+
+*h1* ...
+
+*h2* ...
+
+*h3* ...
+
+*h4* ...
+
+=== Optimisation ===
+
+Dans cette partie du cours on considère des mécanismes d'optimisation est les cas où ces mécanismes peuvent être le plus utile.
+
+== Maintenance des contraintes d'intégrité ==
+
+...
+
+== Sélection par égalité ==
+
+...
+
+== Sélection par intervalle ==
+
+...
+
+== Tris ==
+
+...
+
+== Agrégat ==
+
+...
+
+== Jointure par égalité ==
+
+...
+
+=== Plan d'exécution de l'optimisation ===
+
+Dans le cas d'une **requête complexe** il est généralement préférable de commencer par les sélections pour minimiser la taille des jointures. ...
+
+=== Regroupement ===
+
+Il est possible de regrouper (physiquement) plusieurs tables (logiques) pour pouvoir utiliser un seul index ou hache pour toute les tables. ...
+
+=== Techniques sophistiquées pour la conception ===
+
+...
+
+====== Interaction de programmes avec SGDB ======
+
+===== JDBC: un API normalisé Java =====
+
+Il y a quatre types d'architectures normalisé. Il y a aussi l'architecture //server side// qui n'est pas normalisé.
+
+^ couches ^ Type 1         ^ Type 2      ^ Type 3       ^ Type 4    ^
+^ o       | Pasarelle ODBC | Java        | JDBC         | ...       |
+^ .       | Pilote ODBC    | Pilote SGBD | ...          | ...       |
+^ s       | ...                         || serveur JDBC | ...       |
+^ db      |  SGDB                                                ||||
+
+==== Définitions JDBC ====
+
+...
+
+==== SQLJ ====
+
+...
+
+==== Déployer code dans le serveur ====
+
+...
+
+===== JPA =====
+
+...
+
+==== Annotaions pour les classes ====
+
+JPA définie des annotations pouvant être appliquer à des classes java pour leurs accordé des caractéristiques spéciales.
+
+...
+
+=== Gestionnaire des données persistantes ===
+
+  EntityManager
+
+
+
+====== Mécanismes de contrôle ACID ======
+
+Préalable à cette section: les concept ACID (Atomicité, Consistance, Isolation, Durabilité, (Légalité)) présenté dans le cours [[inf3180#ACID|inf3180]].
+
+===== Ordonnancement sérialisable =====
+
+AC**I**D - Pertinent à la isolation. 
+
+===== Contrôle de la concurrence =====
+
+AC**I**D - Pertinent à la isolation.
+
+==== Verrouillage ====
+
+.......
+
+==== Estampillage ====
+
+...
+
+==== Certification ====
+
+...
+
+==== Multiversion ====
+
+.......
+
+===== Contrôle de la fiabilité et récupération =====
+
+ACI**D** - Pertinent à la durabilité. 
+
+==== Journal ====
+
+...

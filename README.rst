@@ -1,4 +1,4 @@
-Mes notes de cours en reStructuredText
+Mes notes de cours (incompletes) en reStructuredText (pas vraiment, mais un jour peut-être)
 
 Tous les documents dans ce dossier et ses sous-dossiers sont disponibles sous
 la `Creative Commons Attribution-ShareAlike 3.0 Unported License`_ sauf si

@@ -1,0 +1,139 @@
+====== Introduction ======
+
+INF4230 - Intelligence Artificielle. Ce cours est donné à UQÀM. Il est un cours optionnel dans le cadre du Bac en informatique et génie logiciel.
+
+====== Raisonnement Probabiliste ======
+
+== Survol ==
+
+  * Le raisonnement probabiliste est utile quand l'environnement est [[#environnement|non-deterministe]].
+  * ...
+
+====== Réseaux Bayésiens ======
+
+=== Survol ===
+
+Un réseau Bayésien est une graphe jumelée avec de l'information probabiliste. Une révision de la [[inf4680|théorie des probabilités]] et préalable.
+ 
+  * Les nœuds sont les variables.
+  * Les arcs sont les **dépendances** entre les variables et sont orientés en direction des causes aux effets ou vice-versa.
+  * Chaque variable est accompagnée d'une table de probabilité ou **table de probabilités conditionnelles (TPC)**.
+  * Les TPC représentent des morceaux de la distribution conjointe des probabilités. 
+
+== Indépendance et indépendance conditionnel entre les variables ==
+
+Dans le cas générale, on peut savoir si une variable A est indépendante de B si la connaissance de B n'a aucun effet sur la probabilité de A et vice-versa. Formellement: A est indépendant de B si P(A|B) = P(A) //ou// P(B|A) = P(B) //ou// P(A,B) = P(A)P(B).
+
+Dans un réseaux Bayésien, considère l'indépendance conditionnelle. Donc si le noeud de la variable B est un non-**descendant** de A, A est indépendante de B si on connaît les parents de A. Si B est n'importe qu'elle autre type de noeud, A est indépendante de B sachant les parents, enfants et parents des enfants de A (c-à-d sa **couverture de Markov**).
+
+== Inférence exacte ==
+
+Inférence c'est «l'interogation» du RB pour trouver la probabilité d'une requête.
+
+L'**inférence par énumération** est basé sur l'équivalences P(X∣e) = 𝛼 P(X,e) = 𝛼 ∑y, P(X,e,y) (voir distribution conjointe des probabilités) qui sont appliqués aux TPC d'un réseau bayésien ainsi: P(X∣e) = 𝛼 ∑y, P(X,e,h1,...,hn) = 𝛼 ∑h1,...∑hn, P(X∣parents de X)P(e∣parents de e)P(h1∣parents de h1)...P(hn∣parents de hn) où X est la variable pour laquelle on fait la requête, e1 ... en sont les évidences, et h1 ... hn sont les variables cachées de notre réseaux. 
+
+Le point faible de l'inférence exacte est la complexité temporelle élevée des différents algorithmes. Pour cette raison on a l' ...
+
+== Inférence approximative ==
+
+...
+
+=== Détails ===
+
+== Indépendance conditionnelle ==
+
+...
+===== Réseaux Bayesiens dynamiques =====
+
+...
+
+====== Robtique ======
+
+...
+
+====== Processus décisionnel de Markov (MDP) ======
+
+...
+
+====== Apprentissage Machine ======
+
+...
+
+===== L'apprentissage =====
+
+...
+
+===== Réseaux Neuronales artificiels (RNA) =====
+
+...
+
+==== f(net) ====
+
+...
+
+==== Apprentissage compétitif ====
+
+...
+
+====== Robotique ======
+
+...
+
+===== Probabilistic Road Map =====
+
+...
+
+===== Rapid random Trees =====
+
+...
+
+====== Réponses aux exercices ======
+
+Des réponses originales a un variétés d'exercises. Attention à ne pas transgresser les droits d'auteurs et les politiques regardant le plagiat.
+
+===== Beaudry, Eric; «Exemples de questions d'examen final (Hiver 2013)» =====
+
+== Q1 ==
+
+**a)** T et D sont indépendant car P(t|D) = P(t) = 0.8
+
+**b)** E est dépendante de C parce qu'on ne connaît pas la valeur de D est donc on ne connaît pas la valeur de tous ces parents.
+
+**c)** E est indépendante de C dans les cas où D est vraie //ou// D est fausse car les variables dans sa couverture de Markov sont tous connus.
+
+**d)** P(E∣¬c) = 𝛼 ∑t∑d∑r, P(T)P(D∣¬c,R)P(R)P(e∣T,D)P(¬c)
+
+P(e∣¬c) =
+
+^ T ^ D ^ R ^ P(T) ^ P(D∣¬c,R) ^ P(R) ^ P(e∣T,D) ^ P(¬c) ^ ∏      ^
+| V | V | V | 0,8  | 0,6       | 0,8  |  ...     |  ...  | ...    |
+| F | V | V | 0,2  | 0,6       | 0,8  |  ...     |  ...  | ...    |
+| V | F | V | 0,8  | 0,6       | 0,8  |  ...     |  ...  | ...    |
+| F | F | V | 0,2  | 0,6       | 0,8  |  ...     |  ...  | ...    |
+| V | V | F | 0,8  | 0,4       | 0,2  |  ...     |  ...  | ...    |
+| F | V | F | 0,2  | 0,4       | 0,2  |  ...     |  ...  | ...    |
+| V | F | F | 0,8  | 0,4       | 0,2  |  ...     |  ...  | ...    |
+| F | F | F | 0,2  | 0,4       | 0,2  |  ...     |  ...  | ...    |
+|                                             ∑ = |||||||| 0,38192 |
+
+Pour obtenir 𝛼 on fait la même chose pour P(¬e∣¬c),ce qui donne 0,27348. Donc 𝛼 = 1 / (0,38192 + 0,27348) = 1,5257857797. Donc P(e∣¬c) = 1,5257857797 * 1,12 = __0,582728105__.
+
+et P(E∣¬c,¬t) = 𝛼 ∑d∑r, P(D∣¬c,R)P(R) ...
+
+**d)** ...
+
+== Q2 ==
+
+**a)**
+
+{{:q3-a.png?|}}
+
+**b)**
+
+P(X1=A∣X0=<1/3; 1/3; 1/3>) = 𝛼 ∑x0 P( ... 
+
+== Q6 ==
+
+**a)** L'environnement du problème est totalement observable, déterministe, (épisodique ou séquentielle), statique, discret (même si dans une vraie intersection le problème est continue, la réalité est discrétisée dans la simulation) et il n'y a qu'un agent (l'itersection intelligente qui contrôle les autos).
+
+**b)** 

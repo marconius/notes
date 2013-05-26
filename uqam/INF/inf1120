@@ -1,0 +1,500 @@
+====== INF1120 - Intro programmation ======
+
+==== Introduction à la programmation Java ====
+
+**Environement de développement**
+
+  * JDK (Jave Dev Kit)
+    * 1.5 ou plus (Java 5)
+    * télécharger sur site (done, son!)
+    * NB: déménage JAVA à C:\ 
+  * BlueJ
+    * dernière version
+
+JRE = Java Runtime Environment : pour exécuter le byte code Java
+
+**Structure d'un projet**
+
+  Un Projet -> dossier (.proj)
+    |
+  un ou plusieurs package -> dossier
+    |
+  un ou plusieurs classes -> 1 classe --------->  (ex.)Personne.java
+    |
+  Methodes / variables
+       constants
+
+** Environnement JAva **
+
+ composé prinicipalemnt de:
+
+  * un compilateur
+  * un interpréteur de bytecode (Machine virtuelle ou JVM
+  * ... voir notes de cours en ligne
+
+à défaut d'un environnement de dév intégré (IDE), les commandes sont à retenir:
+
+  * java --> ... voir notes en ligne
+
+**éléments léxicaux**
+
+ il y a des mots réservé: mots qui font parti du langage. ex. Utilise-les pas comme nom de variables.
+
+** identificateurs**
+
+variables, classes, ... prédefini, definis par le programmeur
+
+**littéral** un valeur explicite apparaissant dans le programme, et qui ne change pas.
+
+**Opérateurs** des symboles formées d'un ou plus char spéciales permettent d'executer un operation sur un, deux, trois, opérandes.
+
+note: % = modulo ( le reste de la division), ++ : incrément 
+
+**Séparateurs** servent à définir un niveau de source
+
+**commentaires**
+  // texte -> une ligne à la fois
+  /* texte */ -> plusieurs lignes
+  /** teste **/ -> plusieurs lignes et utilisée par en collaboration avac l'outil javadoc
+
+===Structures d'un Programme JAva ===
+tout programme est un ensemble de classes. Une classe est généralement une collection de méthodes et de variables
+
+un ensemble d’éléments ayant des propriétés communes
+
+exemples: étudiant => nom, prénom, age, sexe, nmbre cours, code permanent ...
+  
+  package nomPacquetage;
+  /** commentaires
+  */
+  [public] class NomClasse {
+      Attribut(s) de la classe;
+      Methodes de la classe;
+      [ public static void main(String args[])
+          {
+          bloc d'indtructions
+          }]
+  }
+  
+Notes:
+
+(__obligatoires__)
+
+__public__ __class__ NomClasse __{__
+
+...
+
+__public static void main(String args[]) {__
+
+**1) Déclaration du paquetage d'appartenance**: les classes sont regroupés en fonction des caractéristiques  communes: pacquetage. Aide l'organisation.
+
+commentaires
+
+**2) Définition d'une classe**
+
+Les accolades marques le début et la fin des definitions et les méthodes.
+
+**3) la méthode main ** la méthode principale
+
+=== Instructions et déclarations ===
+ **1) Instructions:** la plus petite unité
+
+**2) Déclarations**: est toute instruction qu permet de donner un nom, un tyype et un mode d'accès (visibilité).
+
+exemple: 
+  int valeur ;
+  public float
+  
+**règles d'écriture**
+  * identificateur doit toujours commencer par une lettre ou trait bas ... voir notes 
+  * ... voir  notes
+  * identificateurs est case-sensitive
+  * nom d'un classe ou interface s'ecrit en minuscules, sauf la 1ere lettre qui doit être majuscule pour chaque mot
+  * nom de variable en minuscule sauf premiere lettre de tous mots après la première
+  * pacquetage: nom minuscule aveec points séparant les mots. ex: piece.of.shit
+  * constante en majuscule avec trait bas pour séparer les mots
+  * ... voir notes
+  * idéntificatuer doit être significatif
+  * declarer constantes au début de la classe ou méthode
+  * une seule déclaration par ligne 
+  * une instruction par ligne
+  * utiliser des commentaires pertinents et significatifs
+  * commenter par bloc logique d'instructions
+  * l'accolade ouvrante ou fermante au début de la prochaine ligne réspectant l'indentation
+  * lignes vides pour aérer le code
+
+=== entrées sorties ===
+
+**sortir les données**
+
+  system.out.print(texte ou donnés);
+pour continuer sur la même ligne (pas de return character) ou
+  system.out.println(texte ou donnés);
+
+concatenation ex.
+  int a = 5;
+  int b = 2;
+  System.out.print(a+ " plus "+b+" = "+a+b);
+
+sorte: 5 plus 2 = 52 (a cause que + a la même priorité partout donc le compilateur pense que c'est un concatenation
+  System.out.print(a+ " fois "+b+" = "+a*b);
+sorte: //5 plus 2 = 10// à cause que * a priorité et est évalué avant les autre opérateurs (i.e +)
+dès Java 5.0 : méthode printf
+  double monnaie = 1000.0/3.0;
+  System.out.print(monnaie); // prints 333.33333333333333333333333333333333...
+  System.out.printf("%8.2f" , monnaie); // prints 333.33
+
+**Types**
+
+  * Entier: //lireByte() -> byte ; lireShort() -> short ; lireInt() -> int ; lireLong() -> long//
+  * Réel : //lireFloat() -> float ; lireDouble() -> double //
+  * Caractére : //lireString() -> char//
+
+Exemple:
+  variable_déclaré = Clavier.lireDouble();
+
+classe //String// pour textes plus longues.
+
+**saisir les donné**
+
+**Classe Clavier.java** : bibliothèque qui contient les foncions de saisie de tous les types primitifs (sauf boolean) et du type String disponible à grosmax (http://www.grosmax.uqam.ca/prog/Inf1120/Outils/Clavier.html)
+
+=== janvier 25, 2001 notes labo2 ===
+
+Remarque
+  char phrase1 = 'qqchose'; // char utilise apostrophe
+  String phrase2 = "qqchose"; // String utilise guillemets
+
+float:
+  float numero1 = 1000.0f // f est necessaire
+Remarque, pour la division il faut que au moins un des operands soit un réel
+  float fraction1 = 5/9.0;
+  float fraction2 = 5.0/9;
+  float fraction3 = 5.0/9.0;
+
+===== Conventions d'ècriture =====
+
+^ identificateurs ^ conventions ^  
+|  | commence par un lettre ou trait bas |
+|  | peut contenir chiffres ou accente (déconseillé) |
+|  | pas un mot réservé |
+| Classe | en minuscule sauf première lettre de tous le mots |
+| variable | en minuscule sauf les première lettres des mots conséquentes (pas la première mot)|
+| paquetage | en minuscule; mots séparées par point (ex. java.io) |
+| constante | en majuscule; mots séparées pas trait bas (ex. MAXIMUM_LOAD ) |
+
+===== janvier 31 - séance =====
+
+**Notes de la dernière classe**
+
+La classe Scanner dans le JDK 1.5 fait la même chose que Clavier
+
+format utilisé pour printf ex:
+  float money = 100/3;
+  System.out.println(money);
+  System.Out.printf("%8.2f" money);
+prints
+  33.33333333333333333333333333
+  33.33
+parce que 8 démarque le nombre de chiffres avant le décimal, 2 le nombre de chiffres après le décimal, et //f// dit que c'est un //float//.
+
+=== Les Types ===
+
+il y a **Les types primitifs** et **les types référence**
+
+^ Les Types ^^^
+^ reference ^ primitifs ^^
+| à un objet | boolean ||
+| à un tableau | char ||
+|::: | Numeriques ||
+|::: | Entiers | Réels |
+|::: | byte | float |
+|::: | short | double |
+|::: | int  |::: |
+|::: | long |::: |
+
+
+** Références ** : adresse memoire qui pointe sur un ensemble d'information. Ex. String, Tableau
+
+Ex. 
+  String nom;
+  nom = "Daniel";
+
+nom => [D][a][n][i][e][l]
+
+**Types primitifs** : contenu dans un espace memoire bien défini?
+
+** Type boolean** : contient deux valeurs. un seul bit
+
+** Type char** : contient un combinaison binaire qui réfère à un table de répresentance : jeu de caractères Unicode
+
+exemple de jeu de cractères (encoding)
+^ fb ^ fE ^ fL ^
+| . | .  | .  |
+| . | .  | .  |
+| . | .  | .  |
+fb: format binaire, fE : format entier, fc : caractère
+
+  * ASCII (2<sup>7</sup>) = 128 (0 à 127)
+  * Unicode (2<sup>16</sup>) = 65,536 ...
+
+Dans les types réel et entier, Java a des **types par défaut**. 
+  * Pour les __réel__ le letteral par défaut est __double__
+  * __Entier__ -> __int__
+Java a aussi un //valeur// par défaut par type
+  * int -> 0
+  * boolean -> 0 ou faux
+  * référence -> null
+
+=== Declaration et manipulation de variables === : spécifie le type, donner un nom. il y a 4 catégories de variables: locale, arguments d'un méthode, var. d'instance, var de methode
+
+**Variables locales** utilisé juste par à l'intérieur de le méthode
+
+structure: <type> nomDeVariable = valuer_initiale;
+
+**Variables constante** 
+
+structure: [final] <type> <nomDeVariable> = <valeur>;
+
+**Affectation** : On peut initialiser un variable avec un affectation. C'est la même chose qu'on utilise pour varié le variable
+
+structure: <nomDeVariable> = <valeur_initiale>; ou <nomDeVariable> = <valeur>
+
+Il y - a un **tableau de priorité** pour **les opérateurs et expressions**
+
+**Important** Division entier ex. 
+  int nombre1 = 7;
+  int nombre2 = 2; 
+  int resultat;
+  resultat = nombre1/nombre2;
+valeur de resultat est 3. 
+
+On peut utilisé **modulo**(%) pour attrapper le reste.
+  int resultat2 = nombre1%nombre2;
+valeur de resultat2 est 1
+  float resultat3 = mb1/mb2;
+valeur de resultat3 est 3.0
+  float nb1 = 7.0f;
+  float nb2 = 2.0f;
+  float resultat = nb1/nb2;
+valeur de resultat = 3.5
+  double nb1 = 7.0;
+  double nb2 = 2.0;
+  double resultat = nb1/nb2;
+REMARQUE : float rentre dans un double, mais double rentre pas dans un float.
+
+** rappel **
+
+  8%11
+donne 8 parce que 8/11 = 0 avec 8 réstant
+
+  int i = 8;
+  int x ;
+  x = i++ //x à la valeur de 8 parceque la valeur de i a été inseré dans x avant l'incrementation
+  x = ++i //x == 9
+
+==== Structures sélectives (if - else, switch) ====
+
+Java (et autres languages similaires) a le pouvoir __de modifier l'ordre d'exécution des instructions__.
+
+les **structures de contrôle** contrôlent l'ordre.
+
+structure **if-else** simple : a. if à un branche ou if à deux branches (if-else)
+
+structure **if-else** multiple ou imbriquée : plusiers if-elses et elseif
+
+syntaxe
+  if(condition) {
+      ...instructions...
+  }
+  elseif {
+      ... istructions ...
+  }
+  ...
+  else {
+      ...instructions...
+  }
+
+condition doit être Vrai ou Faux. une condition peut être composée
+
+en pseudocode:
+  SI ( condition ) ALORS
+      instructions de bloc
+  SINON SI ( condition ) ALORS
+      instructions bloc 2
+  ...
+  SINON
+      instructions de bloc 3
+  FIN SI
+
+**remarque** : utiliser beaucoup de constants!
+
+**ordinogramme** : la condition est dans un diamond avec deux flèches sortant. Si il y a un else, la flèche 'fausse' pointe à 
+les instructions du else, si non cette flèche pointe après les instructions 'if'. Les instructions sont dans des containiteurs 
+réctangulaire.
+
+**rappel** : les variables sont locales. ex: ceci ne marche pas!
+  int j;
+  j = 9;
+  if( j > 8 ) {
+    int i;
+	i = 6;
+  }
+  System.out.println("j = " + j);
+  System.out.println("i = " + i);
+
+** rappell ** : les classes que Java import par défaut sont dans le java.lang.*
+
+==== Boucles ====
+
+exemple
+  k = 4
+  while( k != 4 ) {
+      
+      k = k+2;
+      
+  }
+  System.out.println(k);
+
+
+^ Iteration ^ conditions ^ variables ^
+| 0 | k != 4 //est vrai// | k = 4 -> k = k + 2 |
+| 1 | k != 4 //est faux// | k = 4 |
+
+exemple b
+  i = -3;
+  j = 1;
+  for ( j = 2 ; j < 8; j++ ) {
+      i = i+j;
+  }
+  System.out.println(i);
+
+
+^ Itération ^ conditions ^ variables ^^
+| 0 | j < 8 //est vrai (j == 1) // | i = -3 -> i = i + j | j = 1 -> j++ |
+| 1 | j < 8 //est vrai (j == 2) // | i = -3 -> i = i + j = -3 + 2 | j = 2 -> j++ |
+| ... | j < 8 //est vrai (j < 8)// | ... | ... |
+| 7 | j < 8 //est faux (j == 8)// | rien change | j = 8 |
+
+exemple c
+  j = 18
+  k = 0
+  do {
+      j = j - 2
+      k = k + 4
+  } while ( j != k || k != 21 )
+  
+
+^ Itération ^ conditions ^ variables ^^
+| 0 | j != k OU k != 24 | j = 18 -> j = j-2 | k = 0 -> k = j+4 |
+| 1 | --- | j = 16 | k = 4 |
+| 2 | 16 != 4 OU 4 != 21 //vrai// | j = 14 | k = 8 |
+| 3 | 14 != 8 OU 8 != 21 //vrai// | j = 12 | k = 12 |
+| 4 | 12 != 12 OU 12 != 21 //vrai// | j = 10 | k = 16 |
+| 5 | 10 != 16 OU 16 != 21 //vrai// | j = 8 | k = 20 |
+| 6 | 8 != 20 OU 20 != 21 //vrai// | j = 6 | k = 24 |
+
+ceci est une boucle infinie. Elle va compilé, mais est virtuellement inutile
+
+exemple d
+  i = 7
+  j = 1
+  do { // boucle externe
+      for ( int k = 3; k <= i; k++ ) { // boucle interne
+         j = j + 1
+      }
+      ...
+      ...
+  } while (...)
+  System.out.print(...)
+
+Boucles imbriqués => //nested loops// 
+
+==== Méthodes ====
+
+**DEF** : un bloc d'instructions que effectye (généralement) une seul tâche
+
+aka : fonctions, méthods, procédures --> une seule tache à exécuter --> résultat de fournir
+
+Utile pour diviser un grand problème en sous-problèmes
+
+Pourquoi spécialiser un algorithme ?
+  * éviter la redondance
+  * organiser le code source
+  * faciliter l'entretien
+
+Remarque : Structure habituelle d'un logicielle
+    
+    fichier clavier        Saisies des infos
+    et bases de données       |
+                              |
+    couche metier          Appliquer les régles
+    buisness                  |
+                              |
+    Résultat à fournir     Aficher les résultats
+    
+Planification : est-ce qu'on a besoin d'un rentré?, est-ce qu'on a besoin de sortir?, est-ce qu'on a besoin de donner un résultat?
+
+syntaxe : 
+  [modificateur d'accesibilite][utilisation] Type de retour
+      NomDeLaMethode ([parametre(s)]) {
+  
+  bloc d'instructions 
+  
+  }
+
+== Modificatuer d'accessibilité : ==
+
+si //private// : accessible seulement dans la classe 
+
+si //protected// : accessible seulement dans la classe
+
+si //public// : est accessible partout
+
+si on laisse vide : tous les classes dans le paquetage
+
+== utilisation ==
+
+**Rappelons** qu'un classe représente un ensemble des éléments ayant des propriétés communes
+
+//static// : invoqué à partir du nom de la classe. Appelé méthode de la classe.
+
+si on laisse vide : invoqué à partir du nom de l'objet ou de l'instance. Appelé méthode d'instance ou d'objet
+
+== Type de retour ==
+
+//void// : ne retourne rien
+
+type primitif : retourne un type primitif
+
+type référence : retourne un string, etc..
+
+== paramètres ==
+
+les variables qui sont passé à la fonction.
+
+ex. 
+  public static void afficherMinimum(int nombre1, int nombre2, int nombre3, int minimum) { ...
+  }
+
+remarque : les variables déclaré pour la méthode sont disponible juste dans la méthode
+
+exemple d'une méthode qui retourne un valeur. Ici on utilise **int** pour retourner un entier
+    public static int determinerMinimum (int nombre1, int nombre2, int nombre3) {
+    ...
+        return value;
+    }
+
+Tous les méthodes qui retournent doit avoir l'instruction **return**
+
+**Invocation** des méthodes
+
+possible avec import ou sans. ex sans import : nomDuPackage.nomDeLaClasse.nomDeLaMethode();
+
+==== TP1 partie 2 ====
+
+Il s'attend d'avoir une Classe (Tp1Partie2) -> __une__ methode main pour tous les instructions et comprend : 
+  - déclarations des constantes et variables
+  - saisie et validation
+  - application des règles
+  - affichage de la facture

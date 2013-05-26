@@ -1,0 +1,74 @@
+Scéance 6
+
+Génie logiciel :: Programmation par contrats
+
+Overview
+  - Approche introduit par Bertrand Meyer en c. 1986 (ETH de Zurich)
+  - Métaphore du monde des affaires où on a un fournisseur et consomateur (client) qui sont liés par un contrat
+  - contrat: une **entente** d'echange entre un fourniesseur et un client
+  - dans les deux cas (fourn et client), il y a des **obligations** et des **garantis**
+  - L'idée de Meyer est d'appliqué cette métaphore dans le domaine du logiciel
+    ex: un méthode: implémentation de la méthode par fournisseur, utilisation par client
+    so contract defines not only what the software does, but also how it is to be used
+  - En fait les obligations des fournisseur sont les garantis du client (et vice versa)
+  - La programmation par contrat est intégrée à certains languages de prog comme Eiffel
+    note: possible to add contract libraries or whatever to other langs
+  - OCL can define constraints for tests to confirm adherence to contract
+
+Réalisation des contrats pour les méthodes:
+  - Précondition: qui est satisfaite avant l'appel
+    - Une garantie pour le fournisseur
+    - Une obligation pour le client
+    - Describe the context
+    
+  - Postcondition: doit étre satisfaite après l'appel
+    - Une garantie pour le client
+    - Une obligation pour le fournisseur
+
+En UML on fait la distribution entre:
+  Operation: nom + parametres, valeurs de retour de leurs types
+  Méthode: dans un language de prog
+  
+  Outil UML
+    instrucions:
+    ajouter un opération à une class => class -> New child -> Owned operation -> Operation
+    configurer l'operation: Show Properties (name, type (retour), 
+    ajouter parametres: Operation -> New Child -> Owned Param -> Prametre
+    configurer param: (in, out, return)
+  
+  Outil Dresden OCL
+    On peut définir des pre et postconditions avec les directions pre et post
+    note: `self` refère toujours à un instance de la classe context
+    note: `result` dans un postcondition est la valeur de retour
+    note: c or collection ...
+    ex:
+    ----- UML ------
+    classe Etudiant
+    opération
+      inscrireA(c:Cours)
+    
+    ----- OCL ------  
+    context Etudiant::inscrireA
+    
+    -- l'étudiant n'est pas déjà inscrit au cours
+    pre: cours -> includes(c)
+    
+    -- l'étudiant est inscrit au cours
+    -- c'est dans la collections des cours de self
+    post: cours -> includes(c)
+    -- `self` est un étudiant de `c`
+    post: c.etudiants -> includes(self)
+    
+    ----------------
+    context Etudiat::reussitUnCours() -- increment le nombre de credits de 3
+    
+    -- creditsReussit à été incrémenté de 3
+    post: creditsReussis = creditsReussis@pre + 3
+    --     valeur après     valeur avant
+    
+    ----------------
+    context Etudiat::nombreDeCours : Integer
+    -- retour un nombre de cours auxquels l'étudiant est inscrit
+    post: result = cours -> size()
+    
+    Voir plus d'exemples sur site .. peut-être.
