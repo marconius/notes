@@ -2,9 +2,165 @@
 Génie Logiciel : Conception
 ===========================
 
-Ceux-ci sont mes notes de cours pour le cours INF5153! Ouiiiii
+------------
+Introduction
+------------
+
+Survol
+======
+
+* Types de développement: linéaire, itératif, itératif incrémentale
+* Design ...
+
+Conception
+----------
+
+La conception est la partie du cycle de vie qui prend les documents créés pendant les étapes d'analyse_ et s'en base pour crées des directives pour les programmeurs qui décrivent l'**architecture** et le **design** liés au système.
+
+Détails
+=======
+
+...
 
 
+------------
+Architecture
+------------
+
+Survol
+======
+
+Familles d'architectures
+------------------------
+
+- **Modèle monolithique** : un bloc d'instructions sur une machine. Ne communique pas avec autres environements.
+- **Système à terminaux** : ...
+- **Client/serveur** (2-tiers) : ...
+    - Client léger : ...
+    - Client lourd : ...
+- **n-Tiers** : ...
+    - Architecture logique: des couches ...
+
+
+Détails
+=======
+
+...
+
+Approche en couches
+-------------------
+
+Pour augmenter encapsulation et minimiser couplage. L'exemple MVC sépare la couche de présentation (interface avec usager ou autre système), application (logique business), et de persistance (BD etc).
+
+Des autres couches peuvent être ajouter pour insuler encore plus les composants du système. Par exemple la couche **coordonatrice**, le **service de persistance**, et la couche **service**.
+
+(Il va avoir une image ici un jour)
+
+
+
+
+------
+Design
+------
+
+Survol
+======
+
+Les exigences / la qualité du design
+------------------------------------
+
+exigences non-fonctionnels
+``````````````````````````
+
+Couplage
+````````
+
+voir notes sur le couplage_ dans inf3105_
+
+Cohésion
+````````
+
+voir notes sur la cohésion_ dans inf3105_
+
+Porcessus / philosophie pour le design 
+``````````````````````````````````````
+
+* Centré sur l'architecture
+* Centré sur les procedures (process-centric)
+* Centré sur les données (data-centric)
+
+Opération système
+-----------------
+
+AKA: evénement système. Un appel de service qui origine de l'exterieur du système. Pour le décrire:
+
+nom, description, intrants, extrants, {préconditions, postconditions}(contrats)
+
+Diagramme de communication
+``````````````````````````
+
+Un artifacte UML qui représente une opération système en montrant les communications entre les objects qu'on utilise pour executer l'opération.
+
+Class responsibility cards (CRC)
+````````````````````````````````
+
+Aide à identifier et a organiser les opérations système pour les classes du système.
+
++-------------------------------------------------------+
+| NomClasse                                     *Super* |
++============================+==========================+
+| Liste des Résponsabilitées | Liste des Collaborateurs |
++----------------------------+--------------------------+
+| (verso)                                               |
++=======================================================+
+| Données                                               |
++-------------------------------------------------------+
+| Notes                                                 |
++-------------------------------------------------------+
+
+
+...
+
+Indirection (patron)
+--------------------
+
+Placer des intrermédiaires entre couches qui devraient pas communiquer ensemble.
+
+PureFabrication (patron)
+------------------------
+
+...
+
+Polymorphisme (patron)
+----------------------
+
+Les sous-classes peuvent rentrer dans leurs parents, mais pas l'oppossé ... Employer le patron **Null Pointer** pour gérer les objects «nulles» ou neutres, le patron **Composite** pour combiner plusieurs sous-classes et le patron **Factory Method** pour faciliter la création du type parent. 
+
+Adapter (patron)
+----------------
+
+Un adaptateur est une classe qui sert comme lien de communication entre des classes externes et le système. Exemple: les services courriels. p.436
+
+Proxy (patron)
+--------------
+
+...
+
+State (patron)
+--------------
+
+Détails
+=======
+
+...
+
+Liens entre polymorphisme et autres ...
+
+Liens entre proxy et Indirection ...
+
+
+
+-----------
 
 This work is licensed under a `Creative Commons Attribution-ShareAlike 3.0 Unported License`_
 
