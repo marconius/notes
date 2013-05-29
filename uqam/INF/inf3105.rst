@@ -1,15 +1,19 @@
-=========
-Intro C++
-=========
+==============================================
+INF3105 - Structures de données et algorithmes
+==============================================
 
-------
+---------
+Intro C++
+---------
+
+
 Survol
-------
+======
 
 C++ est un langage compilé en code machine, déclaratif, fortement typé, `procedural`, `générique`.
 
 Syntax (bon header?)
-======
+------
 
 Le langage C++ est une augmentation du langage C_ donc le syntax de base est égale à C: exemples
 
@@ -26,17 +30,17 @@ Le langage C++ est une augmentation du langage C_ donc le syntax de base est ég
 Entêtes (interfaces) dans fichiers .h ou .hcc et implementation dans .cc ou .cpp ... GCC et le compliateur utilisé dans le cours.
 
 Tableaux, pointeurs et réferences
-=================================
+---------------------------------
 
 Comme dans le langage C.
 
 Passage de paramêtres
-=====================
+---------------------
 
 Par défaut les paramêtres sont passés aux fonctions par 
 
 E/S
-===
+---
 
 * std::cin : Le flux d'entrée standard (stdin)
 * std::cout : Le flux de sortie standard (stdout)
@@ -44,7 +48,7 @@ E/S
 * operateurs E/S >> et << retournent des &std::istream ou &std::ostream
 
 Mémoire
-=======
+-------
 
 * Pile (stack) : mémoire alloué (par le compilateur) pour le fonctionnement du programme.
 * Tas (heap) : mémoire utilisé pour l'allocation dynamique.
@@ -52,7 +56,7 @@ Mémoire
 NB: pour le cours on suppose que l'allocation de mémoire coût O(1).
   
 Classes
-=======
+-------
 
 `Classes Java`_ sont inspirées de C++, donc concepts de classes similaires. Les aspects importants des classes en C++:
 
@@ -62,7 +66,7 @@ Classes
 Il existe aussi des classes générique qui 
 
 const 
-=====
+-----
 
 C'est bon! Aide à éviter des erreurs car une variable const est bloquée à la compilation. Pour une méthode d'instance on peut mettre le ``const`` à deux palces:
 
@@ -73,7 +77,7 @@ C'est bon! Aide à éviter des erreurs car une variable const est bloquée à la
 Juste avant les accolades d'une fonction membre, `const` spécifie que la fonction peut être appelé dès des instances `const`.
 
 Opérateurs
-==========
+----------
 
 Les opérateurs peuvent être surchargés. ex:
 
@@ -85,17 +89,16 @@ Les opérateurs peuvent être surchargés. ex:
 
 NB: ``friend`` pour fonctions statiques (fonctions de classe) ... nécessaire pour les opérateurs d'E/S
 
--------
 Détails
--------
+=======
 
 Caractéristiques et histoire
-============================
+----------------------------
 
 ...
 
 Entrée / Sortie
-===============
+---------------
 
 ...
 
@@ -110,17 +113,17 @@ La difference entre stdout et stderr est ...
 Pour spécifier un fichier autre que les fichiers spéciaux standards on utilise les streams: std::istream et std::ostream (wrong)
 
 Mémoire
-=======
+-------
 
 L'**allocation dynamique** sur le tas : ``new`` alloue assez de mémoire pour le type spécifique et retourne l'adresse du nouveau objet. *Ne pas oublier de libérer la mémoire*! ``delete`` désallou un objet existant.
     
 Classes
-=======
+-------
 
 Note: En C++, les classes sont exactement la même chose q'une structure, sauf que les membres d'un struct sont publiques par défaut et pour un classes sont privés.
 
 Constructeur, déstructeur, attributs
-------------------------------------
+````````````````````````````````````
 
 Constructeur ...
 
@@ -158,7 +161,7 @@ On commence avec un objet, Execute les destructeurs des attributs puis le destru
         delete[] nosTel;
 
 Héritage et fonctions virtuels
-------------------------------
+``````````````````````````````
 
 Il y a un hierarchie de classes ... les fonctions virtuelles doivent être définies pour concrétiser la classe ...
 
@@ -173,7 +176,7 @@ Le mot clé ``this`` est un pointeur qui point sur l'objet courant. Pour extrair
       }
 
 Classes génériques
-------------------
+``````````````````
 
 ...
 
@@ -181,7 +184,7 @@ pourquoi définir des operateurs const et pas const ... ...
 
 
 Exercices
-==========
+---------
 
 Exercise vu en classe 1 :
 
@@ -198,24 +201,24 @@ Exercise vu en classe 1 :
 Pas bon parce que le compilateur  ...
 
 
-=====================
+---------------------
 Structures de données
-=====================
+---------------------
 
-------
+
 Listes
-------
+======
 
 Survol
-======
+------
 
 Les tableau natifs à C++ sont de taille fixe. Pour On implemente la liste avec les tableaux natifs, mais on à besoin d'allocation de mémoire automatique et dynamique sur le heap: la liste doit croitre avec l'ajout d'éléments. Encapsulation! On veut cacher les fonctions d'augmentation du tableau.
 
 Détails
-=======
+-------
 
 Implémentation
---------------
+``````````````
 
 On crée un classe `Tableau` générique (tableau d'éléments de n'importe quel type: le type `T`) qui:
 
