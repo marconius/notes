@@ -1,0 +1,68 @@
+==========================
+INM5151 - Projet d'analyse
+==========================
+
+Ce cours consiste d'apliquer le matériel présenté dans le cours INF5151_. Pour une introduction au génie logiciel, voir les notes du cours INF5151_.
+
+-------------
+Normalisation
+-------------
+
+
+ISO 29110
+=========
+
+Profils de cycle de vie pour très petits organismes (TPO). Ce processus et compatible avec le méthodes de dévelopement en cascade, itératif, et autres ...
+
+...
+
+Éxigences
+---------
+
+...
+
+...
+
+
+
+IEEE 830.1998
+=============
+
+Normalise la production d'un document *Software Requirements Specification* (SRS).
+
+
+
+Survol
+------
+
+Les objectifs
+`````````````
+
+* faciliter l'entente entre client et fournisseur
+* ...
+
+Caractèristiques
+````````````````
+
+* Complet : ...
+* ...
+
+Parties du SRS
+``````````````
+
+1. Itroduction: La raison d'être du produit, scope, ....
+2. Description: perspective, fonctions, ...
+3. Requis: les détails/specs pour les fonctionnalités. (Important!) 
+
+...
+
+Prototypage
+```````````
+
+Aide à identifier des specifications manquées pendant rédaction du SRS. ...
+
+
+
+Détails
+-------
+
