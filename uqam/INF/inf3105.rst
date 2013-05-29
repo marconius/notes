@@ -13,6 +13,8 @@ Syntax (bon header?)
 
 Le langage C++ est une augmentation du langage C_ donc le syntax de base est égale à C: exemples
 
+::
+
     #include<module.h>
     ...
     void main() {
@@ -64,6 +66,8 @@ const
 
 C'est bon! Aide à éviter des erreurs car une variable const est bloquée à la compilation. Pour une méthode d'instance on peut mettre le ``const`` à deux palces:
 
+::
+
     int NomClasse::f(const Type& ref) const { ... }
   
 Juste avant les accolades d'une fonction membre, `const` spécifie que la fonction peut être appelé dès des instances `const`.
@@ -72,6 +76,8 @@ Opérateurs
 ==========
 
 Les opérateurs peuvent être surchargés. ex:
+
+::
 
       Element NomClasse::operator[](int i) {
         return tableau[i];
@@ -95,6 +101,8 @@ Entrée / Sortie
 
 La difference entre stdout et stderr est ...
 
+::
+
     std::cout << "Entrez deux numéros" << std::endl;
     int a, b;
     std::cin >> a >> b; // lit les deux nombres dans stdin (séparés par des éspaces)
@@ -117,6 +125,8 @@ Constructeur, déstructeur, attributs
 Constructeur ...
 
 On commence avec un objet, Execute les destructeurs des attributs puis le destructeurs de la class supérieur.
+
+::
 
       // déclaration dans personne.h
       Class Personne {
@@ -154,6 +164,8 @@ Il y a un hierarchie de classes ... les fonctions virtuelles doivent être défi
 
 Le mot clé ``this`` est un pointeur qui point sur l'objet courant. Pour extraire un attribut d'un pointeur on utilise la flêche ``->`` comme dans C. (Si on joue avec objet utilise le ``.``.
 
+::
+
       ...
       NomClasse::copieAttr() {
         NomClasse autre = new NomClasse();
@@ -172,6 +184,8 @@ Exercices
 ==========
 
 Exercise vu en classe 1 :
+
+::
 
   int main() {
     int n; 
@@ -211,6 +225,7 @@ On crée un classe `Tableau` générique (tableau d'éléments de n'importe quel
         * méthode naïve: si `elements` et pleine: copier dans une nouvelle tableau de grandeur taille + 1 (complexité temps O(n^2)).
         * méthode meilleure: si `elements` et pleine: copier dans une nouvelle tableau qui est 2 ou 1,5 fois plus grande (O(2n-1)).
 
+::
 
     //class TableauDunTypeSpécifique {
     template<class T> class Tableau {
