@@ -17,6 +17,7 @@ Contents:
    :maxdepth: 2
 
    uqam/INF/inf3105
+   uqam/INF/inf3135
    uqam/INF/inm5151
    uqam/INF/inf5153
 

@@ -1,0 +1,100 @@
+==================================================
+INF3135 - Construction et maintenance de logiciels
+==================================================
+
+-----------------------
+Programmation Modulaire
+-----------------------
+
+3 Types
+=======
+
+Il y a trois types de modules.
+
+Abstrait 'non-opaque'
+---------------------
+
+Permet de définir un multiple d'instances du même type. Il y a deux types de
+modules abstraits:
+
+Collection de valeurs
+`````````````````````
+
+«Immutable» ...
+
+Classe d'objets
+```````````````
+
+«mutable» ...
+
+Type Machine Abstraite
+----------------------
+
+Équivalent à une classe d'objet mais avec une seul instance. Utilise des 
+valeurs statiques qui sont internes au module.
+
+Type Bibliothèque de routines
+-----------------------------
+
+Implemente ...
+
+Couplage
+========
+
+Le liens entre les elements du logiciel. Moins de couplage est mieux donc on 
+parle souvent du découplage.
+
+Cohésion
+========
+
+La cohésion est déterminé par le niveau d'independance pour une fonction ou 
+d'une module. De la cohésion élevée est désirable.
+
+Il y a plusieurs type de cohésion, mais on considère cohésion fonctionnel dans
+le cours (H13)
+
+
+
+
+-----------
+Performance
+-----------
+
+Il y-a trois façons d'évaluation du logiciel
+
+* Qualité de fonctionnalité : conforme au specs? absence de bogues?
+* La qualité du code: est-ce que le code est écrit avec un style claire,
+  conformant aux normes? bonnes commentaires?
+* performance: délais d'execution raisonables? roule bien dans l'environnement?
+  ...
+
+La performance est improtant en pratique, mais elel ne peut pas être l'objectif
+premier. Ce n'est d'ailleurs pas un mésure absolut car il y a géneralement des
+compromis à établir. Exemple : On peut souvant optimiser complixité
+algorithmique avec la recursivité, mais on utilise beaucoup plus de mémoire.
+
+Il y a plusieurs façons d'ammélioré la performance. Le **niveau algorithmique**
+est le plus important by far. **La choix des algorithmes** a un très gros
+impact sur la performance et il est généralement indépendant de la langage
+utilisé. Si on considère deux algorithmes pour produire des séries Fibonacci:
+l'algo recursive beaucoup (Exemple.1.4.c) vs. l'algo itératif. Les autres
+choses à considérer:
+
+* choix de langage
+* qualité de code
+* choix du matériel
+
+Optiomasions algorithmique
+==========================
+
+Plus info inf3105_.
+
+Compléxité asymptotique
+-----------------------
+
+voir les notes dans inf1130_
+
+...
+
+Optimisation du code
+====================

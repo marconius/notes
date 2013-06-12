@@ -9,16 +9,56 @@ Introduction
 Survol
 ======
 
-* Types de développement: linéaire, itératif, itératif incrémentale
+* Types de développement: linéaire (en cascade {waterfall}), itératif, 
+  itératif incrémentale
 * Design ...
+* Quattre choses qui se déroullent tout le long du projet
+    * gestion du projet
+    * validation et vérification (Contrôle de la qualité)
+    * assurance-qualité : tests, ...
+    * géestion de configuration (versionning)
 
 Conception
 ----------
 
-La conception est la partie du cycle de vie qui prend les documents créés pendant les étapes d'analyse_ et s'en base pour crées des directives pour les programmeurs qui décrivent l'**architecture** et le **design** liés au système.
+La conception est la partie du cycle de vie qui prend les documents créés 
+pendant les étapes d'analyse_ et s'en base pour crées des directives pour les
+programmeurs qui décrivent l'**architecture** et le **design** liés au système.
 
 Détails
 =======
+
+Cycle de vie
+------------
+
+Les composants du cycle de vie sont montrés ici en ordre séquentiel comme on
+les trouverait dans dév en cascade.
+
++-------------------+---------------+-----------------------+
+| État du logiciel  | Phase         | Étape                 |
++===================+===============+=======================+
+| Pré-dev           | Faisabilité   |                       |
++-------------------+---------------+-----------------------+
+| Dev               | Analyse_      | Exigences logiciles   |
++                   +---------------+-----------------------+
+|                   | Conception    | Architecture          |
++                   +               +-----------------------+
+|                   |               | Design                |
++                   +---------------+-----------------------+
+|                   | Implantation  |                       |
++                   +---------------+-----------------------+
+|                   | Tests         | Verification          |
++                   +---------------+-----------------------+
+|                   | Deploiement   |                       |
++-------------------+---------------+-----------------------+
+| Released          | Maintenace    |                       |
++                   +---------------+-----------------------+
+|                   | Retrait       |                       |
++-------------------+---------------+-----------------------+
+
+Tests: 
+
+Maitenance adaptative vs. corrective: 
 
 ...
 
@@ -33,13 +73,25 @@ Survol
 Familles d'architectures
 ------------------------
 
-- **Modèle monolithique** : un bloc d'instructions sur une machine. Ne communique pas avec autres environements.
-- **Système à terminaux** : ...
-- **Client/serveur** (2-tiers) : ...
-    - Client léger : ...
-    - Client lourd : ...
+- **Modèle monolithique** : un bloc d'instructions sur une machine. Ne
+  communique pas avec autres environements.
+- **Système à terminaux** : Un ordinateur centrale qui s'occupe de tout, puis
+  des terminaux satelites sans acun intelligence qui permet aux usagers de
+  communiquer avec l'ordi centrale.
+- **Client/serveur** (2-tiers) : 
+    - Client léger : Moins de logique de travail sur client. i.e: Présentation
+      et validation syntaxique)
+    - Client lourd : Plus de logique de travail sur client. i.e: calculs
+      communs, 
 - **n-Tiers** : ...
-    - Architecture logique: des couches ...
+    - exemples:
+        - web (client léger)
+        - mmo (client lourd)
+        - grid computing (client lourd)
+    - P2P: pas claire si peers sont clients ou serveurs.
+    - **Architecture logique**: des couches pour:
+        - découpler
+        - faciliter maintenance 
 
 
 Détails
@@ -47,17 +99,47 @@ Détails
 
 ...
 
++--------+----------------------------------+-------------------------------+
+|Client  | Avantages                        | Désavantages                  |
++========+==================================+===============================+
+|léger   | * plus portable                  | * plus de charge sur serveur  |
+|        | * mis-a jours facile             |                               |
++--------+----------------------------------+-------------------------------+
+|lourd   | * décharge serveur de la charge  | * difficulté deploiement      |
+|        |                                  |   et maintenance              |
++--------+----------------------------------+-------------------------------+
+
 Approche en couches
 -------------------
 
-Pour augmenter encapsulation et minimiser couplage. L'exemple MVC sépare la couche de présentation (interface avec usager ou autre système), application (logique business), et de persistance (BD etc).
+Pour augmenter encapsulation et minimiser couplage. L'exemple MVC sépare la
+couche de présentation (interface avec usager ou autre système), application
+(logique business), et de persistance (BD etc).
 
-Des autres couches peuvent être ajouter pour insuler encore plus les composants du système. Par exemple la couche **coordonatrice**, le **service de persistance**, et la couche **service**.
+Des autres couches peuvent être ajouter pour insuler encore plus les composants
+du système. Par exemple la couche **coordonatrice**, le **service de
+persistance**, et la couche **service**.
 
-(Il va avoir une image ici un jour)
+(Il va avoir une image ici un jour, peut-être)
 
++---+-------------------+
+| s | presentation      |
+|   |                   |
++   +-------------------+
+| e | coordonateur      |
+|   |                   |
++   +-------------------+
+| r | application       |
+| v |                   |
++   +-------------------+
+| i | accés persistance |
+|   |                   |
++   +-------------------+
+| c | persistance       |
+| e |                   |
++---+-------------------+
 
-
+Le patron Façade_ est employé pour isoler les couches.
 
 ------
 Design
@@ -71,6 +153,9 @@ Les exigences / la qualité du design
 
 exigences non-fonctionnels
 ``````````````````````````
+
+Ne sont pas liées au fonctionnalités. Ex: requis de performance, sécurité,
+portabilité, déploiement.
 
 Couplage
 ````````
@@ -89,79 +174,233 @@ Porcessus / philosophie pour le design
 * Centré sur les procedures (process-centric)
 * Centré sur les données (data-centric)
 
-Opération système
------------------
+Opération système [#larm_en_operation_sys]_
+-------------------------------------------
 
-AKA: evénement système. Un appel de service qui origine de l'exterieur du système. Pour le décrire:
+AKA: evénement système. Un appel de service qui origine de l'exterieur du
+système. Pour le décrire:
 
 nom, description, intrants, extrants, {préconditions, postconditions}(contrats)
+
+.. [#larm_en_operation_sys] Larman p.240
 
 Diagramme de communication
 ``````````````````````````
 
-Un artifacte UML qui représente une opération système en montrant les communications entre les objects qu'on utilise pour executer l'opération.
+Un artifacte UML qui représente une opération système en montrant les 
+communications entre les objects qu'on utilise pour executer l'opération.
 
 Class responsibility cards (CRC)
 ````````````````````````````````
 
-Aide à identifier et a organiser les opérations système pour les classes du système.
+Aide à identifier et a organiser les opérations système pour les classes du 
+système.
 
-+-------------------------------------------------------+
-| NomClasse                                     *Super* |
++----------------------------+--------------------------+
+| NomClasse                  |         *NomSuperClasse* |
 +============================+==========================+
 | Liste des Résponsabilitées | Liste des Collaborateurs |
 +----------------------------+--------------------------+
-| (verso)                                               |
-+=======================================================+
+| **(verso)**                                           |
++-------------------------------------------------------+
 | Données                                               |
 +-------------------------------------------------------+
 | Notes                                                 |
 +-------------------------------------------------------+
 
 
-...
+... 
 
-Indirection (patron)
---------------------
+Les patrons GRASP
+-----------------
 
-Placer des intrermédiaires entre couches qui devraient pas communiquer ensemble.
+Des patrons basés sur les **responsabilités**.
 
-PureFabrication (patron)
-------------------------
+* **Couplage faible** : moins de couplage.
+* **Cohésion forte** : plus de cohésion.
+* **Expert** : Assigner une responsabilité à la classe qui connais le plus
+  d'information liée à cette résponsabilité.
+* **Creator** : Se demander des questions pour savoir à qui assigner la
+  résposabilité de création.
+* **Controlleur** [#larm_en_controller]_: Le premier objet après la couche IU 
+  qui délègue les tâches aux objets des autres couches
 
-...
-
-Polymorphisme (patron)
-----------------------
-
-Les sous-classes peuvent rentrer dans leurs parents, mais pas l'oppossé ... Employer le patron **Null Pointer** pour gérer les objects «nulles» ou neutres, le patron **Composite** pour combiner plusieurs sous-classes et le patron **Factory Method** pour faciliter la création du type parent. 
-
-Adapter (patron)
-----------------
-
-Un adaptateur est une classe qui sert comme lien de communication entre des classes externes et le système. Exemple: les services courriels. p.436
-
-Proxy (patron)
+Autres patrons
 --------------
 
-...
+.. indirection, polyphormisme et pure fabrication sont des familles de patrons 
+   GRASP. Les splitter dans leur propre liste de patrons?
 
-State (patron)
---------------
+* Singleton : une seule instance
+* Indirection :
+    * Façade : Une classe pour toute interaction avec tout composant d'un 
+      sous-système. 
+* Polymorphisme : Comment gérer des variants d'un certain type? Avec l'héritage.
+    * Strategie: Utilise l'héritage pour representer les differents sorts d'une
+      chose
+* Pure Fabrication : Si rien peut faire le job on crée quelque chose pour le faire
+    * Null Object
+    * Composite: Complement Polymorphisme en combinant plusieurs variants
+    * FactoryMethod: Regle probleme avec instantiation complexe par prendre en
+      charge la logique de la création de les sous-classes.
+* Adaptateur (Adaptor): Generique qui définit des operations nécessaires pour communiquer avec un système local et peut être sous-classé pour adapter à un système externe.
+* Proxy
+    * remote
+    * device
+    * virtual
+* State: gérer les changements d'états 
+* Template: si on veut sous-classer, on est exigé d'implementater de certaines
+  méthode
+* DTO
 
 Détails
 =======
 
+Patrons GRASP
+-------------
+
+Expert
+``````
+
 ...
 
-Liens entre polymorphisme et autres ...
+Créateur
+````````
+
+On assigne la résponsabilité de créer une classe A à une classe qui répond oui
+au plus grand nombre des questions suivantes. Est-ce que la classe candidate :
+
+1. a besoin de l'instance de A?
+2. a les données nécessaires pour instancier A?
+3. peut contenir A dans un de ses membres (variable ou classe)?
+4. peut collectionner A (dans une liste ou collection membre)?
+5. peut enregistrer A dans un support persistant?
+
+1 et 2 sont liées à la création et 3 à 5 sont liés à la conservation des 
+données.
+
+Controller [#larm_en_controller]_
+`````````````````````````````````
+
+le but est : ...
+
+Util quand: ...
+
+.. [#larm_en_controller] Larman p. 286-289, 302-313
+
+
+
+Les autres patrons
+------------------
+
+Patrons *GoF*: proviennent d'un Livre influentiel 1994 qui introduit des 
+importants patrons.
+
+Façade (GoF) [#larm_en_facade]_
+```````````````````````````````````
+
+Le problème est que la communication avec un sous-système requière souvent de
+connaître tous ses composants et communiquer directement avec plusieurs entre
+eux. Ceci augment le couplage et donc introduit tous les problèmes liés à ça.
+
+*Façade* consiste de créer qu'un point de contact entre le sous-système est le
+reste du système.
+
+Liens avec les DTO: ...
+
+.. [#larm_en_facade] Larman p.461
+
+Singleton
+`````````
+**Utilité**: Dans le cas qu'une objet ne devrait avoir q'une seul instance.
+
+Pour l'implementer il faut:
+
+1. Une variable statique qui contient l'instance unique.
+2. Accesseur statique publique qui vérifie qu'il y a juste un instance.
+3. Un constructeur privé.
+
+**Initialisation paraseuse** : on fait pas new à la déclaration du singleton, 
+                               mais dans l'apelle à l'accesseur.
+
+Indirection
+```````````
+
+Placer des intrermédiaires entre couches qui devraient pas communiquer
+ensemble.
+
+PureFabrication
+```````````````
+
+...
+
+Polymorphisme
+`````````````
+
+Les sous-classes peuvent rentrer dans leurs parents, mais pas l'oppossé ...
+Employer le patron **Null Pointer** pour gérer les objects «nulles» ou neutres,
+le patron **Composite** pour combiner plusieurs sous-classes et le patron
+**Factory Method** pour faciliter la création du type parent. 
+
+Adapteur (patron)
+`````````````````
+
+Un adaptateur est une classe qui sert comme lien de communication entre des
+classes externes et le système. Exemple: les services courriels. p.436
+
+Proxy (patron)
+``````````````
+**remote proxy** ...
+
+**Virtual Proxy** !!! Si ton objet est si grand, pourquoi pas just amméliorer 
+l'objet??
+
+Un exemple d'usage pour les remote proxy est pendant la migration de système.
+Le proxy est utilisé pour transférer les interactions envers l'ancien système
+jusqu'à qu'elles sont implémentées dans le nouveau.
 
 Liens entre proxy et Indirection ...
 
+State (patron)
+``````````````
 
+Quand un objet change d'états il est possible que son comportement change, donc
+le State nous aide à gérere les changements d'états d'un objet. Un classe État
+gére les sous-classes états liées à Classe comme ça Classe ne doit pas gérer
+ses les comportements de ses differents états.
+
+Danger de faire du side casting. Voir regles...
+
+Cohésion dégradée car ...
+
+Couplage augmenter car l'objet dépende maintenant d'une classe de plus.
+
+Règles pour l'héritage
+----------------------
+
+par Peter Code.
+
+1. Sous-classe **is a kind of** super classe
+2. **No side casting**
+3. **ne pas renier son héritage**: donc ne pas annuler des services que la
+   classe parente offre.
+4. Sous-classer les utilitaires **seulement** pour créer autres utilitaires.
+   Exemple d'utilitaires: containers comme ArrayList, TreeSet, etc...
+
+
+
+
+---------------
+Notes pratiques
+---------------
+
+* ArgoUML n'offre pas beaucoup des fonctionalités reliées à la création de
+  diagrammes de communication.
 
 -----------
 
-This work is licensed under a `Creative Commons Attribution-ShareAlike 3.0 Unported License`_
+This work is licensed under a `Creative Commons Attribution-ShareAlike 3.0
+Unported License`_
 
-.. _`Creative Commons Attribution-ShareAlike 3.0 Unported License`: http://creativecommons.org/licenses/by-sa/3.0/deed.en_CA
+.. _`Creative Commons Attribution-ShareAlike 3.0 Unported License`: 
+     http://creativecommons.org/licenses/by-sa/3.0/deed.en_CA

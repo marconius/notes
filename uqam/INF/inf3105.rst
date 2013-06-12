@@ -250,5 +250,31 @@ On crée un classe `Tableau` générique (tableau d'éléments de n'importe quel
         Tableau<T>& operator = (const Tableau<T>& autre); 
         // Nécessaire de surchargé op = si non ça copie un pointeur au elements 
         // au lieu de données au complet
-    
+
+
+Arbres
+======
+
+Survol
+------
+
+**Arbre AVL**
+
+Détails
+-------
+
+Arbres AVL
+``````````
+
+pour ajouter ....
+
+les balancements ... gauche droite, droite à gauche, les double rotations ...
+
+pour enlever ....
+
+
+Ittérateurs pour arbres
+```````````````````````
+
+
 
