@@ -174,21 +174,22 @@ Porcessus / philosophie pour le design
 * Centré sur les procedures (process-centric)
 * Centré sur les données (data-centric)
 
-Opération système [#larm_en_operation_sys]_
--------------------------------------------
+Opération système 
+-----------------
 
 AKA: evénement système. Un appel de service qui origine de l'exterieur du
 système. Pour le décrire:
 
 nom, description, intrants, extrants, {préconditions, postconditions}(contrats)
 
-.. [#larm_en_operation_sys] Larman p.240
 
-Diagramme de communication
-``````````````````````````
+Diagramme de communication [#larm_en_diag_comm]_
+````````````````````````````````````````````````````
 
 Un artifacte UML qui représente une opération système en montrant les 
 communications entre les objects qu'on utilise pour executer l'opération.
+
+.. [#larm_en_diag_comm] Larman p.240
 
 Class responsibility cards (CRC)
 ````````````````````````````````
