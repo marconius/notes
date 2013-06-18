@@ -38,17 +38,22 @@ Type Bibliothèque de routines
 
 Implemente ...
 
+.. _main_couplage_ref:
+
 Couplage
 ========
 
 Le liens entre les elements du logiciel. Moins de couplage est mieux donc on 
-parle souvent du découplage.
+parle souvent du découplage. (voir aussi le patron :ref`low coupling`_)
+
+.. _main_cohesion_ref:
 
 Cohésion
 ========
 
-La cohésion est déterminé par le niveau d'independance pour une fonction ou 
-d'une module. De la cohésion élevée est désirable.
+La cohésion est déterminée par le niveau auquel les éléments qui sont regroupés
+sont dépendents, liés et complémentaires. La cohésion élevée (désirable)
+indique le bon regroupement d'éléments dans le code.
 
 Il y a plusieurs type de cohésion, mais on considère cohésion fonctionnel dans
 le cours (H13)

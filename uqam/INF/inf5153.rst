@@ -11,7 +11,8 @@ Survol
 
 * Types de développement: linéaire (en cascade {waterfall}), itératif, 
   itératif incrémentale
-* Design ...
+* Conception = architecture (focus sur l'architecture n-tiers) et design (voir 
+  patrons)
 * Quattre choses qui se déroullent tout le long du projet
     * gestion du projet
     * validation et vérification (Contrôle de la qualité)
@@ -63,6 +64,11 @@ Maitenance adaptative vs. corrective:
 ...
 
 
+
+
+
+
+
 ------------
 Architecture
 ------------
@@ -83,7 +89,7 @@ Familles d'architectures
       et validation syntaxique)
     - Client lourd : Plus de logique de travail sur client. i.e: calculs
       communs, 
-- **n-Tiers** : ...
+- **n-Tiers** : comme client serveur, mais avec plusieurs "couches"
     - exemples:
         - web (client léger)
         - mmo (client lourd)
@@ -129,17 +135,24 @@ persistance**, et la couche **service**.
 | e | coordonateur      |
 |   |                   |
 +   +-------------------+
-| r | application       |
+| r |                   |
+|   | application       |
 | v |                   |
 +   +-------------------+
 | i | accés persistance |
 |   |                   |
 +   +-------------------+
 | c | persistance       |
+|   |                   |
 | e |                   |
 +---+-------------------+
 
 Le patron Façade_ est employé pour isoler les couches.
+
+
+
+
+
 
 ------
 Design
@@ -160,12 +173,12 @@ portabilité, déploiement.
 Couplage
 ````````
 
-voir notes sur le couplage_ dans inf3105_
+Voir notes sur le :ref:`main_couplage_ref` dans :doc:`inf3135`.
 
 Cohésion
 ````````
 
-voir notes sur la cohésion_ dans inf3105_
+voir notes sur la :ref:`main_cohesion_ref` dans :doc:`inf3135`.
 
 Porcessus / philosophie pour le design 
 ``````````````````````````````````````
@@ -191,8 +204,8 @@ communications entre les objects qu'on utilise pour executer l'opération.
 
 .. [#larm_en_diag_comm] Larman p.240
 
-Class responsibility cards (CRC)
-````````````````````````````````
+Class responsibility cards (CRC) [#larm_en_crc]_
+``````````````````````````````````````````````````````
 
 Aide à identifier et a organiser les opérations système pour les classes du 
 système.
@@ -209,8 +222,7 @@ système.
 | Notes                                                 |
 +-------------------------------------------------------+
 
-
-... 
+.. [#larm_en_crc] Larman p.218
 
 Les patrons GRASP
 -----------------
@@ -226,33 +238,36 @@ Des patrons basés sur les **responsabilités**.
 * **Controlleur** [#larm_en_controller]_: Le premier objet après la couche IU 
   qui délègue les tâches aux objets des autres couches
 
+Familles de patrons Grasp
+`````````````````````````
+* Indirection : (i.e Façade, ...)
+* Polymorphisme : Gérer les variants des type avec l'héritage
+* Pure Fabrication : Si on a rien qui peut faire le job bien on crée quelque 
+  chose de nouveau pour le faire
+
 Autres patrons
 --------------
 
-.. indirection, polyphormisme et pure fabrication sont des familles de patrons 
-   GRASP. Les splitter dans leur propre liste de patrons?
-
+* DTO: Objet utilisé pour transferer que les (copies des) données et aucune
+  logique
 * Singleton : une seule instance
-* Indirection :
-    * Façade : Une classe pour toute interaction avec tout composant d'un 
-      sous-système. 
-* Polymorphisme : Comment gérer des variants d'un certain type? Avec l'héritage.
-    * Strategie: Utilise l'héritage pour representer les differents sorts d'une
-      chose
-* Pure Fabrication : Si rien peut faire le job on crée quelque chose pour le faire
-    * Null Object
-    * Composite: Complement Polymorphisme en combinant plusieurs variants
-    * FactoryMethod: Regle probleme avec instantiation complexe par prendre en
-      charge la logique de la création de les sous-classes.
+* Façade : Une classe pour toute interaction avec tout composant d'un 
+  sous-système. 
+* Strategie: Utilise l'héritage pour representer les differents sorts d'une
+  chose
+* Null Object
+* Composite: Complement Polymorphisme en combinant plusieurs variants
+* FactoryMethod: Regle probleme avec instantiation complexe par prendre en
+  charge la logique de la création de les sous-classes.
 * Adaptateur (Adaptor): Generique qui définit des operations nécessaires pour communiquer avec un système local et peut être sous-classé pour adapter à un système externe.
 * Proxy
-    * remote
-    * device
-    * virtual
-* State: gérer les changements d'états 
-* Template: si on veut sous-classer, on est exigé d'implementater de certaines
-  méthode
-* DTO
+    * remote: envers système extèrne
+    * device: envers un péripherique physique
+    * virtual: envers un objet très complèxe dans le système
+* State: gérer les changements d'états
+* Template: limiter le sous-classement avec une superclasse template qui exige
+  l'implémentation de certaines fonctionalités. (Template en C++ Interface en 
+  Java)
 
 Détails
 =======
@@ -395,8 +410,10 @@ par Peter Code.
 Notes pratiques
 ---------------
 
+* Util en ligne : `LucidChart <https://www.lucidchart.com>`_ (à essayer)
 * ArgoUML n'offre pas beaucoup des fonctionalités reliées à la création de
   diagrammes de communication.
+
 
 -----------
 
