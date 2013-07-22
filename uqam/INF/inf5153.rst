@@ -259,7 +259,9 @@ Autres patrons
 * Composite: Complement Polymorphisme en combinant plusieurs variants
 * FactoryMethod: Regle probleme avec instantiation complexe par prendre en
   charge la logique de la création de les sous-classes.
-* Adaptateur (Adaptor): Generique qui définit des operations nécessaires pour communiquer avec un système local et peut être sous-classé pour adapter à un système externe.
+* Adaptateur (Adaptor): Generique qui définit des operations nécessaires pour 
+  communiquer avec un système local et peut être sous-classé pour adapter à un
+  système externe.
 * Proxy
     * remote: envers système extèrne
     * device: envers un péripherique physique

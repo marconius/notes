@@ -1,6 +1,0 @@
-===== Fonctions =====
-
-F : A -> B est injective <=> <math>f(a_1) = f(a_2) \rightarrow a_1 = a_2 </math>
-
-F : A -> B est injective <=> <math>\forall b \in B, \exists a \in A : b = f(a)</math>
-

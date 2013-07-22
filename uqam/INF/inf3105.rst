@@ -10,14 +10,18 @@ Intro C++
 Survol
 ======
 
-C++ est un langage compilé en code machine, déclaratif, fortement typé, `procedural`, `générique`.
+C++ est un langage compilé en code machine, déclaratif, fortement typé,
+procedural, générique.
 
-Syntax (bon header?)
+Syntax
 ------
 
-Le langage C++ est une augmentation du langage C_ donc le syntax de base est égale à C: exemples
+.. est que «Syntax» est le bon header?
 
-::
+Le langage C++ est une augmentation du langage C (voir :doc:`inf3135`) donc le
+syntax de base est égale à C: exemples
+
+.. code:: c++
 
     #include<module.h>
     ...
@@ -27,7 +31,9 @@ Le langage C++ est une augmentation du langage C_ donc le syntax de base est ég
         return a;
     }
 
-Entêtes (interfaces) dans fichiers .h ou .hcc et implementation dans .cc ou .cpp ... GCC et le compliateur utilisé dans le cours.
+Entêtes (interfaces) dans fichiers .h ou .hcc et implementation dans .cc ou 
+.cpp ... GCC et le compliateur utilisé dans le cours.
+
 
 Tableaux, pointeurs et réferences
 ---------------------------------
@@ -50,7 +56,8 @@ E/S
 Mémoire
 -------
 
-* Pile (stack) : mémoire alloué (par le compilateur) pour le fonctionnement du programme.
+* Pile (stack) : mémoire alloué (par le compilateur) pour le fonctionnement du
+  programme.
 * Tas (heap) : mémoire utilisé pour l'allocation dynamique.
 
 NB: pour le cours on suppose que l'allocation de mémoire coût O(1).
@@ -58,7 +65,8 @@ NB: pour le cours on suppose que l'allocation de mémoire coût O(1).
 Classes
 -------
 
-`Classes Java`_ sont inspirées de C++, donc concepts de classes similaires. Les aspects importants des classes en C++:
+`Classes Java` sont inspirées de C++, donc concepts de classes similaires. Les
+aspects importants des classes en C++:
 
 * constructeurs et destructeurs (pour implementer ``new`` et ``delete``)
 * surchargement des fonctions
@@ -68,13 +76,16 @@ Il existe aussi des classes générique qui
 const 
 -----
 
-C'est bon! Aide à éviter des erreurs car une variable const est bloquée à la compilation. Pour une méthode d'instance on peut mettre le ``const`` à deux palces:
+C'est bon! Aide à éviter des erreurs car une variable const est bloquée à la 
+compilation. Pour une méthode d'instance on peut mettre le ``const`` à deux 
+palces:
 
 ::
 
     int NomClasse::f(const Type& ref) const { ... }
   
-Juste avant les accolades d'une fonction membre, `const` spécifie que la fonction peut être appelé dès des instances `const`.
+Juste avant les accolades d'une fonction membre, `const` spécifie que la 
+fonction peut être appelé dès des instances `const`.
 
 Opérateurs
 ----------
@@ -87,7 +98,9 @@ Les opérateurs peuvent être surchargés. ex:
         return tableau[i];
       }
 
-NB: ``friend`` pour fonctions statiques (fonctions de classe) ... nécessaire pour les opérateurs d'E/S
+NB: ``friend`` : une fonction membre qui est en dehors de la porté de la 
+classe, mais a accès à ses membres privés ([STRA]_ p.278). Il est préferable de
+déclarer les opérateurs d'E/S comme des ``friend``s.
 
 Détails
 =======
@@ -104,32 +117,39 @@ Entrée / Sortie
 
 La difference entre stdout et stderr est ...
 
-::
+.. code:: c++
 
     std::cout << "Entrez deux numéros" << std::endl;
     int a, b;
-    std::cin >> a >> b; // lit les deux nombres dans stdin (séparés par des éspaces)
+    std::cin >> a >> b; // lit les deux nombres dans stdin (séparés par des 
+                        // éspaces)
 
-Pour spécifier un fichier autre que les fichiers spéciaux standards on utilise les streams: std::istream et std::ostream (wrong)
+Pour spécifier un fichier autre que les fichiers spéciaux standards on utilise
+les streams: ```std::istream``` et ```std::ostream``` (wrong!!!)
 
 Mémoire
 -------
 
-L'**allocation dynamique** sur le tas : ``new`` alloue assez de mémoire pour le type spécifique et retourne l'adresse du nouveau objet. *Ne pas oublier de libérer la mémoire*! ``delete`` désallou un objet existant.
+L'**allocation dynamique** sur le tas : ``new`` alloue assez de mémoire pour le
+type spécifique et retourne l'adresse du nouveau objet. *Ne pas oublier de 
+libérer la mémoire*! ``delete`` désallou un objet existant.
     
 Classes
 -------
 
-Note: En C++, les classes sont exactement la même chose q'une structure, sauf que les membres d'un struct sont publiques par défaut et pour un classes sont privés.
+Note: En C++, les classes sont exactement la même chose q'une structure, sauf
+que les membres d'un struct sont publiques par défaut et pour un classes sont
+privés.
 
 Constructeur, déstructeur, attributs
 ````````````````````````````````````
 
 Constructeur ...
 
-On commence avec un objet, Execute les destructeurs des attributs puis le destructeurs de la class supérieur.
+On commence avec un objet, Execute les destructeurs des attributs puis le
+destructeurs de la class supérieur.
 
-::
+.. code:: c++
 
       // déclaration dans personne.h
       Class Personne {
@@ -163,11 +183,14 @@ On commence avec un objet, Execute les destructeurs des attributs puis le destru
 Héritage et fonctions virtuels
 ``````````````````````````````
 
-Il y a un hierarchie de classes ... les fonctions virtuelles doivent être définies pour concrétiser la classe ...
+Il y a un hierarchie de classes ... les fonctions virtuelles doivent être
+définies pour concrétiser la classe ...
 
-Le mot clé ``this`` est un pointeur qui point sur l'objet courant. Pour extraire un attribut d'un pointeur on utilise la flêche ``->`` comme dans C. (Si on joue avec objet utilise le ``.``.
+Le mot clé ``this`` est un pointeur qui point sur l'objet courant. Pour
+extraire un attribut d'un pointeur on utilise la flêche ``->`` comme dans C.
+(Si on joue avec objet utilise le ``.``.
 
-::
+.. code:: c++
 
       ...
       NomClasse::copieAttr() {
@@ -201,10 +224,17 @@ Exercise vu en classe 1 :
 Pas bon parce que le compilateur  ...
 
 
+
+
+
+
+
 ---------------------
 Structures de données
 ---------------------
 
+
+.. _liste:
 
 Listes
 ======
@@ -212,7 +242,10 @@ Listes
 Survol
 ------
 
-Les tableau natifs à C++ sont de taille fixe. Pour On implemente la liste avec les tableaux natifs, mais on à besoin d'allocation de mémoire automatique et dynamique sur le heap: la liste doit croitre avec l'ajout d'éléments. Encapsulation! On veut cacher les fonctions d'augmentation du tableau.
+Les tableau natifs à C++ sont de taille fixe. Pour On implemente la liste avec
+les tableaux natifs, mais on à besoin d'allocation de mémoire automatique et
+dynamique sur le heap: la liste doit croitre avec l'ajout d'éléments.
+Encapsulation! On veut cacher les fonctions d'augmentation du tableau.
 
 Détails
 -------
@@ -220,15 +253,17 @@ Détails
 Implémentation
 ``````````````
 
-On crée un classe `Tableau` générique (tableau d'éléments de n'importe quel type: le type `T`) qui:
+On crée un classe `Tableau` générique (tableau d'éléments de n'importe quel
+type: le type `T`) qui:
 
-1. est basée sur un tableau natif. Donc les membres de cette classe sont: T* elements, int capacitéInitiale, int taille 
+1. est basée sur un tableau natif. Donc les membres de cette classe sont: T* 
+   elements, int capacitéInitiale, int taille 
 2. offre une interface public pour l'utilisateur: void ajouter(T), int nbElements():
     * capacité grandisse quand nécessaire, donc comment implementer ajouter()?
         * méthode naïve: si `elements` et pleine: copier dans une nouvelle tableau de grandeur taille + 1 (complexité temps O(n^2)).
         * méthode meilleure: si `elements` et pleine: copier dans une nouvelle tableau qui est 2 ou 1,5 fois plus grande (O(2n-1)).
 
-::
+.. code:: c++
 
     //class TableauDunTypeSpécifique {
     template<class T> class Tableau {
@@ -258,7 +293,20 @@ Arbres
 Survol
 ------
 
+.. _`arbre binaire`:
+
+**Arbre binaire**: ...
+
 **Arbre AVL**
+
+On peut parcourir un arbre de différents façons utiles
+
+.. _parcours:
+
+* préordre: ...
+* postordre: ...
+* en largeur: affiche un niveau (de gauche à droite) à la fois
+* inordre: ...
 
 Détails
 -------
@@ -276,5 +324,254 @@ pour enlever ....
 Ittérateurs pour arbres
 ```````````````````````
 
+...
+
+Monceau (Heap)
+==============
+
+* Le but c'est de pouvoir y extraire l'élément plus petit en temps :math:`\in 
+  O(1)`
+* Données linéaires et partiellment ordonnées
+* Liste d'opérations simple
+    * Inserer un élément
+    * Accéder le premier élément
+    * Supprime le premier élément
+
+Un monceau: représentation graphique et en mémoire:
+
+.. digraph:: exemple_arbre_monceau
+    
+    2 -> 4 -> 7;
+    2 -> 6 -> 9;
+    4 -> 8;
+    
++-----+-----+-----+-----+-----+-----+
+| [0] | [1] | [2] | [3] | [4] | [5] |
++-----+-----+-----+-----+-----+-----+
+|  2  |  4  |  6  |  7  |  8  |  9  |
++-----+-----+-----+-----+-----+-----+
+
+Détails
+-------
+
+Un monceau peut être représenté avec un `arbre binaire`_ où:
+
+* la racine est l'element le plus petit (ou avec la plus haute priorité)
+* l'arbre est **complet**: il n'y à aucun trous à gauche (il doit avoir une
+  meilleur façon de le dire)
+* chaque noeud est toujours plus petit de ses descendants
+
+Un monceau peut être implémenté avec une **liste_** où:
+
+* la racine est à l'indice 0 de la liste
+* l'ordonnencement des elements dans la liste suit le `parcour en largeur`__ de
+  l'arbre
+* pour trouver les **enfants** d'un noeud : gauche : :math:`2i + 1` et droite :
+  :math:`2i + 2`
+* pour trouver le **parent** d'un noeud: :math:`(i-1)/2` (sauf pour i=0)
+
+__ parcours_
+
+Insertion
+`````````
+
+1. Inserer l'élément à la fin de la liste (*O(1)*). Ceci est analogue à 
+   insérer le nouveau noeud dans la prochaine place disponible (en allant de
+   gauche à droite de façon complète) dans l'arbre.
+2. Tant que le nouveau élement est plus petit que son parent (et l'élément
+   n'est pas à la racine, bien sûr): l'echanger de place avec son parent.
+
+Dans le pire cas, **l'insertion se fait en** :math:`O(\log n)`, car on insère à
+la fin du tableau (:math:`O(1)` {ammorti}) et dans le pire cas il faut
+remmonter le nouveau élément jusqu'à la racine (:math:`O(\log n)`).
+
+Suppresion de l'élément prioritaire
+```````````````````````````````````
+
+1. On mémorise le premier élément (indice 0)
+2. On transfert le dernier élément à la place du premier (bye bye premier
+   élément)
+3. Tant que cet élément est plus grand que ses deux enfants, on l'échange de
+   place avec le plus petit des deux enfants 
+
+Priorité
+````````
+
+Le monceau est utilisé pour implémenter la **liste de priorité**, qui place
+l'élément le plus prioritaire au début. Le concept de priorité permet de 
+pouvoir definir une base autre que < ou > pour comparer les éléments.
 
 
+Graphes
+=======
+
+Définition : :math:`G = (V,E)`. V est un **ensemble de sommets** (vertices,
+noeuds) et E est une **collection d'arêtes** (edges, arcs)
+
+.. avec sphinx on peut dessiner des graphes!!! if faut ajouter
+   `'sphinx.ext.graphviz'` au tableau `extension` dans `conf.py`
+
+Donc, par exemple:
+
+.. math::
+    
+    G = (V,E)                           \\
+    V = \{a, b, c\}                     \\
+    E = \{(a,b), (a,c), (b,c), (c,b)\}  \\
+
+Répresente:
+
+.. digraph:: exemple1
+
+   a -> c -> b;
+   b -> a;
+   a -> b;
+   
+
+Les algorithmes importantes:
+
+* Parcours
+    1. Recherche en profondeur (depth-first search) : suit le chemins d'un
+       arête sortant jusqu'à la fin (il ne reste plus de sommets non-visités à 
+       visiter) avant de commencer à faire la même chose pour le prochaine 
+       arête sortant
+    2. Recherche en largeur (breadth-first search) : visite tous les prochaines
+       sommets avant d'avancer au prochain «niveau»
+* Recherche de chemin
+    1. Dijkstra
+    2. Floyd-Warsall
+* Recouvrement minimum
+    1. Prim-Jarnik
+    2. Kruskal
+
+Détails
+-------
+
+Définitions
+```````````
+
+* **Graphe orientée**: les arêtes ont une direction
+* Graphe orientée : arêtes ont aucun direction
+* **Sous-graphe** : :math:`G' = (V',E') : V' \subseteq V, E' \text{ est 
+  consistante avec } V'`
+* **Chemin** : ensemble d'arêtes entre deux sommets (ex: :math:`\{ E_{1}, 
+  E_{1}, E_{1}\}`)
+* **longueur de chemin** : nombre d'arêtes entre deux sommets
+* **cycle** :
+    * une graphe **cyclique** contient au moins un cycle, si non elle est ...
+    * une graphe **acyclique**
+* graphe **connexe** : quand il y a au moins un chemin entre tout sommet et 
+  tout autre sommet. Les arbres sont un exemple de graphes connexes
+* graphe **fortement connexe** : une graphe orienté et connexe
+* graphe **fortement non-connexe** : une graphe orienté non-connexe. Elle est 
+  composé de *composantes fortement connexes*.
+* une **étiquette** démarque une caractèristique d'un arête (ex. coût, poids)
+* le **degré** d'un sommet est le nombre d'arêtes qui y rentrent. Pour les 
+  graphes orientés, on parle aussi du **degré entrant** et **degré sortant**.
+  Notation: deg(N) ou degin(N) ou degout(N) = n
+* **forêt** : un enseble d'arbres. ex: une graphe non-connexe.
+* Dans ce cours la cardinalité de V est noté `n` et celle de E `m`
+
+Représentations
+```````````````
+
+**1. La représentation mathématique** : un ensemble de sommets et collection 
+d'arêtes. *Note: pour ce cours on ne considère que les graphes qui n'ont pas de
+multiplicité liée aux arêtes ... bref: un ensemble d'arêtes suffit*
+
+.. code:: c++
+    
+    template <class V, class E> // ex: Graphe­<Lieu, Route>
+    class Graphe {
+      private:
+        struct Arete {
+          V depart, arrive;
+          E etiquette;
+        };
+        set<S> sommets;
+        set­<Arete> aretes; // multiset<Arete> si on veut une collection
+      
+      public:
+        // ...
+    }
+    
+Liste et analyse des méthodes:
+
+* Verifier si deux noeuds sont connectés
+* Enumérer noeuds : math:`O(n)`
+* Enumérer les arcs : :math:`O(|E|)` ... la cardinalité de l'ensemble
+* Enumérer arêtes connctés à un sommet : :math:`O(|E|)`
+
+**2. La représentation par matrice d'adjacence** : (voir :doc:`inf1130`)
+
+.. code:: c++
+    
+    template <class V, class E>
+    class Graphe {
+        Tableau<V>      sommets;
+        Tableau2D<bool> relations; // Ce membre peut être eliminé si on peut 
+                                   // stocker un objet valide, mais 
+                                   // représentant nul (ex: NaN si `E` est type
+                                   // numérique), directement dans le tableau
+                                   // `etiquetes`.
+        Tableau2D<E>    etiquetes; // Les arêtes
+    }
+
+Liste et analyse des méthodes:
+
+* Verifier si deux noeuds sont connectés : O(1) ... car Il suffit de faire
+  `relations[i][j]` représente s'il y a une connexion entre les sommets `i` et 
+  `j`.
+* Enumérer arêtes connectés à un sommet : :math:`O(n)`
+
+Un problème avec cette représentation est la complexité spatiale 
+:math:`∈ O(n^2)`, donc il y-a beaucoup de gaspillage si le nombre d'arêtes est 
+beaucoup plus petits que le nombre de sommets. À utiliser seulement si 
+:math:`m \simeq n^2`.
+
+**3 Listes adjacentes**: implémente un type Sommet qui contient une liste 
+d'arrets sortants et entrants, un tableau de Sommet.
+
+Elimine le problème de gaspillage de la représentation matricielle. Il s'agit
+d'une matrice «creuse», car on mémorise juste les cases qui sont plein.
+
+...
+
+Algorithmes
+```````````
+
+**Djikstra** : pour un sommet `v`
+
+* Compte la somme du coût pour se rendre à `v` depuis le sommet de départ 
+  ([beaudry]_ p.125, algo 6, ligne 12)
+* Mémorise le sommet parent de `v` qui permet de minimiser le coût depuis
+  le départ ([beaudry]_ p.125, algo 6, ligne 12)
+* Utilise une file prioritaire pour choisir quel sommet visiter prochain
+  ([beaudry]_ p.125, algo 6, ligne 8)
+
+.. WARNING: ne fonction si graphe contien des coûts négatifs
+
+.. math::
+    
+    \text{temps } \in O(n \log(n) + m)  \\
+    \text{mémoire } \in O(n)
+    
+
+
+...
+
+
+Table de hachage
+================
+
+.. epigraph::
+  
+  Chaos is a friend of mine
+  
+  -- Bob Dylan
+  
+...
+
+.. [STRA] Bjarne Stroustrup. *The C++ Programming Language*. Addison-Wesley, 
+          special edition, 2000.
+.. [beaudry] Eric Beaudry. *INF3105 - Structures de données - Notes de cours*
