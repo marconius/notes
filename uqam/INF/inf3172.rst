@@ -1,0 +1,122 @@
+===============================================
+INF3172 - Principes des systèmes d'exploitation
+===============================================
+
+Introduction
+============
+
+Le *système d'exploitation* (SE) dans la machine:
+
++--------------------------+------------------------------+-------------------+
+| Programmes d'application |                              | jeux, bureau, ... |
++--------------------------+------------------------------+-------------------+
+| Programmes de système    | programmes utilitaires       | compilateurs,     |
+|                          |                              | interpréteur de   |
+|                          |                              | commandes         |
+|                          +------------------------------+-------------------+
+|                          | **système d'exploitation**   |                   |
++--------------------------+------------------------------+-------------------+
+| Matériel                 |                              | Langage machine,  |
+|                          |                              | dispositifs, ...  |
++--------------------------+------------------------------+-------------------+
+
+Le but du SE:
+
+* Abstraction: une machine convivial qui cache les opérations spécifiques aux
+  périphériques
+
+* Portabilité: L'entré/sortie (E/S) est un source de problèmes pour la
+  portabilité 
+
+Les responsabilités principales du SE:
+
+* *Recevoir des demandes de services abstraits* des applications
+
+    * Applications sont ignorantes de comment faire fonctionner la machine
+    
+    * passage *d'ensembles de donnés*
+
+* *Exécuter des demandes concrètes* envers le matériel 
+
+    * par voie des *pilotes périphériques*
+    
+    * passage de bits
+
+* Gestion des :ref:`processus`, de la mémoire, des :ref:`fichiers`, et 
+  répertoires, des périphériques (E/S), des interfaces. (il y en a d'autres)
+
+Le cours présent des étapes historiques des SE, mais les concepts
+fondamentaux à retenir sont:
+
+* La *multiprogrammation*: façon simple de partager efficacement ressources
+  (temps processeur (CPU)) entre multiples programmes en mémoire (jobs).
+
+    * exécution du prochain job pendant E/S du job courant. Pour changer de job
+      le SE charge son état qui consiste principalement des valeurs dans les
+      registres du CPU (voir :ref:`pcb`)
+    
+    * E/S gérer par des mécanismes séparés
+    
+    * CPU est utilisé 100% du temps (presque)
+    
+* Time-sharing: conçu pour partager les ressources entre plusieurs
+  utilisateurs. Les utilisateurs devrait avoir des réponses en courts délai.
+
+    * *quantum* : chaque utilisateur possède des tranches de temps égales. Si
+      le quantum est trop court on gaspille les ressources avec trop 
+      d'opérations de transition. Si quantum trop long, le délai pour recevoir
+      les réponses peut être trop longue.
+
+
+Les concepts de base à retenir:
+
+* Mode noyau vs. mode utilisateur du CPU, instruction TRAP (bascule modes)
+
+* Espace mémoire
+
+    * espace noyau (kernel space): les programmes du SE
+    
+    * espace utilisateur (user space)
+
+* **Exécution d'un appel système**. Dans espace mémoire : 
+
+    1. ``PUSH`` : mettre les arguments dans la pile
+    
+    2. placement du programme appelé dans les registres 
+    
+    3. exécution du TRAP
+    
+    4. récupération du code de l'appel
+    
+    5. ???
+    
+    6. retour juste après TRAP
+    
+    7. retour au programme et nettoyage de la pile
+
+* Interruption 
+
+
+
+.. _fichiers:
+
+Fichiers
+========
+
+...
+
+
+
+.. _processus:
+
+Processus
+=========
+
+.. _pcb:
+
+Table des processus
+-------------------
+
+En anglais: Processus Control Block (PCB)
+
+...
