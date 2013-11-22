@@ -9,3 +9,10 @@ Pour forker ou cloner que les notes de cours, utiliser la branche ``uqam``
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Sphinx: http://sphinx-doc.org/tutorial.html
 
+
+License
+=======
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 
+Unported License. To view a copy of this license, visit 
+http://creativecommons.org/licenses/by-sa/3.0/deed.en_CA.
