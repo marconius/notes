@@ -16,7 +16,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   uqam/README
    uqam/INF/inf1130
    uqam/INF/inf3105
    uqam/INF/inf3135
