@@ -8,13 +8,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Notes de cours's documentation!
-==========================================
+Notes
+=====
 
-Contents:
+Table of Contents
+-----------------
+
+Projects
+````````
 
 .. toctree::
-   :maxdepth: 2
+   :titlesonly:
+   
+   projects/raspberry_pi_nethub
+   
+
+Notes de cours
+``````````````
+
+.. toctree::
+   :titlesonly:
 
    README.rst
    uqam/INF/inf1130
