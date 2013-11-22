@@ -11,11 +11,16 @@
 Notes
 =====
 
-Table of Contents
------------------
+contents:
+
+.. toctree::
+   :titlesonly:
+   
+   README
+   
 
 Projects
-````````
+--------
 
 .. toctree::
    :titlesonly:
@@ -24,7 +29,7 @@ Projects
    
 
 Notes de cours
-``````````````
+--------------
 
 .. toctree::
    :titlesonly:
