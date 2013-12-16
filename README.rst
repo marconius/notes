@@ -13,10 +13,6 @@ Notes de cours
 
 État: incomplet (mais peut-être un jour)
 
-Le but est de transcrire et, dans certaines cas, completer les notes de cours. 
-Il ne faut pas copier les references qui nous sont fournis dans
-les cours parceque le **plagiat est mauvais**!
-
 Pour forker ou cloner que les notes de cours, utiliser la branche ``uqam``
 
 
