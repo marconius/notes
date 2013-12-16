@@ -120,3 +120,405 @@ Table des processus
 En anglais: Processus Control Block (PCB)
 
 ...
+
+
+
+
+
+
+Threads
+=======
+
+Déf: Le boulot principale des threads est l'exécution
+
+Concepts de base
+----------------
+
+* 2 types de base:
+
+    * intégré dans le système: threading par appels système
+    
+    * simulé dans le système: threading par voie d'une librairie en dehors du 
+      système
+
+* Les **attributs** principales d'un thread sont une fonction et une 
+  progression
+
+    * Attributs partagés: les ressources du processus:
+    
+        * espace mémoire
+        
+        * variables globales (attention à la concurrence {race condition})
+        
+        * fichiers ouverts
+        
+        * procs. enfants
+        
+        * alarmes et allertes
+        
+        * signaux et signal handlers (attention à la consistence)
+        
+        * Info comptes
+    
+    * Attributs propriétaires au thread
+    
+        * un compteur ordinal
+        
+        * les registres
+        
+        * Stack
+        
+        * État
+
+* Les ‎objectifs et avantages principales des threads
+
+    * éviter de créer des nouveau processus ce qui engendre un économie car la
+      création de procs est coûteuse
+    
+    * faciliter la communication entre les différentes parties d'une programme.
+    
+        * le threads s'occupent de l'execution des instructions du proc, puis
+          le **reste est partagé** entre les threads: ie. les ressources du 
+          proc, espace mémoire du proc.
+        
+        * L'ordonnancement des threads peut être gérer par leur processus.
+        
+    * Exploiter la multitude de processor dans le cas des threads au niveau du
+      système 
+
+* Chaque processus a au moins un thread: un processus traditionnel est vue
+  comme étant composé d'un thread seulement qui s'exécute tout seul.
+
+
+Les threads dans l'éspace utilisateur
+-------------------------------------
+
+ex: Posix Pthreads
+
+Les threads sont gérer par le processus (la table des threads reside dans le 
+proc). Ce modèle represente une rélation many-to-one entre les threads et le 
+système car le sys ne voie que les processus.
+
+note: `thread_yield`: passer au prochain thread qui est Ready
+
+Les avantages:
+
+* Moins d'appels système = moins de passage en mode noyau = plus vite
+
+* la librairie est libre d'implémenter n'importe quel algorithme
+  d'ordonnancement.
+
+Les inconvénients:
+
+* **Le système ne voit pas les threads**. Un des dangers et la possibilité que 
+  le proc n'utilise pas tout son temps CPU. S'il y a une opération bloquante
+  dans un des threads, tout le proc est bloqué au lieu de voir s'il y a un
+  autre thread qui peut exécuter pendant le temps CPU alloué au proc. Par
+  contre (side note) il y a certains ESs qui exposent un appel système pour
+  tester si une instruction est bloquante. Comme ça le proc peut céder la place
+  à un autre thread (ex. select dans UNIX).
+
+ 
+
+
+Les threads dans l'éspace système
+---------------------------------
+
+ex: Posix Pthreads (oui ... ça fait le threading des deux façons)
+
+Les threads sont gérer par le ES. Ce modèle représente une relation 1 à 1 entre
+les threads applicatifs et les threads système ... voir inconvénients.
+
+Avantages: 
+
+* pouvoir exploiter multiples processeurs. C'est nécessaire que le ES
+  voie les threads pour ça.
+
+* un thread bloquant ne bloque pas le processus
+
+Inconvénients:
+
+* plus d'appels système
+    
+* il faut stocker une référence de chaque thread dans la mémoire système.
+
+
+
+Le threading hybride (Multithreading)
+-------------------------------------
+
+Une relation many-to-many entre les réf de threads dans le système et les
+threads applicatifs (dans mém utilisateur). D'habitude il y a plus de threads
+utilisateurs que threads dans le sys.
+
+Tous les avantages des deux autre sortes de threads, sans les désavantages.
+
+
+POSIX Pthread
+-------------
+
+Une librairie d'environs 60 fonctions. voici quelques exemples::
+
+    int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
+                       void *(*start_routine) (void *), void *arg);
+
+    int pthread_yield(void);
+    
+    int pthread_join(pthread_t thread, void **retval);
+    
+    int pthread_detach(pthread_t thread);
+    
+    void pthread_exit(void *retval);
+    
+    int pthread_attr_init(pthread_attr_t *attr);
+    
+    int pthread_attr_destroy(pthread_attr_t *attr);
+    
+`pthread_create` est `pthread_join` ont des fonctionnalités similaires au
+fonctions `fork` et `wait` pour les processus
+
+Attention au conditions de course!! Voir :ref:`synchronisation`.
+
+
+
+Mémoire
+=======
+
+...
+
+Le modèle génerale:
+
+* MMU (memory management unit): ...
+
+* Adresse virtuelle: ...
+
+* Symboles (dans le programme):  ...
+
+Une façon facile c'est de diviser la mémoire dans une ensemble de segments 
+(peuvent être statique, mais mellieur s'ils sont extensibles [dynamiques]) ...
+
+... puis le MMU peut allouer les segments au processus de différents façons. 
+On ne parle que de segments dynamiques.
+
+
+Allocation contiguë
+-------------------
+
+Options de représentation: bitmap ou liste d'occupation ...
+
+problèmes: **fragmentation** causé par le swapping
+
+tâches importants: **ramassage des miettes** et **compactage**
+
+
+
+Segmentation
+------------
+
+...
+
+
+
+Pagination
+----------
+
+Concepts de base
+````````````````
+
+L'adresse virtuel correspond à des **cadres** (frames) en mémoire physique qui
+contiennent les pages. l'adresse virtuel consiste de:
+
++----------------+----------------------+
+| numéro de page | déplacement (n bits) |
++----------------+----------------------+
+
+Le nombre de bits qui composent le déplacement (le déplacement dans la page; 
+aka: offset) et décidé par la taille d'une page. La nombre de bits dont le
+numéro de page est constitué (donc le numéro de page possibles) est le restant
+de bits dans l'éspace d'adressage. Par exemple: dans un système 32 bits avec
+pages de taille 4Ko: le numéro de page est de 20 bits et le déplacement est de
+12 bits (une valeur pour chaque octet dans la page) 
+
+On peut calculer le numéro de page à partir de l'adresse virtuelle avec la
+formule ```Av / taille d'une page``` et le déplacement (offset) par
+```Av % taille d'une page ```.
+
+
+Le numéro de page représente un indexe dans la **table des pages**. Les entrées
+dans la table des pages sont constitués typiquement de champs:
+
+* caching disabled:
+
+* référencé: cette information est utile pour les algorithmes de swappage
+
+* modifié: si les données dans la page sont différente des données
+  correspondants sur le disque
+
+* **bit de présence**: signale si la page est stocké dans la mémoire physique
+
+* le numéro de cadre où la page se trouve en mémoire
+
+
+Alors, qu'est-ce qu'il se passe quand on a un défaut de pages? Il faut
+interrompre puis swapper:
+
+1. déroutement envers mode noyau
+
+1. sauvegarder les registres
+
+1. Choisir quelle page remplacer (voir algorithmes de remplacement)
+
+1. Copier la page sur disque si nécessaire (si elle a été modifiée)
+
+1. Planifier la nouvelle page
+
+Le MMU est implémenté de façon physique dans le matériel à cause de la vitesse
+requise et la fréquence d'usage de ses opérations (voir :ref:`mmu`)
+
+Il y a trois types de tables de pages fondamentales
+
+
+Table de page simple
+````````````````````
+
+Une table de pages pour convertir le numéro de page à numéro de cadre.
+
+
+Table de pages à deux niveaux
+`````````````````````````````
+
+La table des pages dans ce cas est divisé en pages elle même. Le premier 
+niveau consiste d'une table des pages de la table des pages.
+
+L'avantage: ce n'est pas nécessaire que la table de pages soit complètement en
+mémoire.
+
+Inconvénient: il faut faire deux accès à la mémoire pour trouver le cadre.
+
+L'adresse virtuel en ce cas:
+
++-----+-----+-------------+
+| PT1 | PT2 | déplacement |
++-----+-----+-------------+
+
+Dans le cas d'un espace d'adressage de 32 bits et taille de page de 4Ko:
+
+* PT1 [10 bits]: l'index dans la table des pages de la table des pages. Dans
+  ce cas cette table a 1024 références aux pages de la table des pages.
+
+* PT2 [10]: le déplacement dans la page de la table des pages. Chaque page
+  contient 1024 entrées. Donc en totale, cette table des pages à deux niveaux
+  contient 2^20 entrées.
+
+* Déplacement [12]
+
+
+Table de page inversée
+``````````````````````
+
+Problème: Un tableau linéaire de pages est impossible dans un espace
+d'adressage de 64 bits: avec des pages de 4Ko, on a 2^52 entrées = 8million
+Go par processus!!!
+
+Solution: indice correspond à la page qui occupe le cadre (au lieu de
+l'adresse virtuel) donc le nombre d'entrées est fixé au nombre de cadres 
+disponible dans la mémoire physique.
+
+La table des pages inverse est toujours combiné avec une mémoire associative
+(cache). Une fonction d'hachage est nécessaire pour la recherche. La table est
+partagée par tous les processus (le pid fait partie de l'entrée).
+
+
+.. _mmu:
+
+Support matériel pour la pagination
+```````````````````````````````````
+
+Le MMU est implémenté au niveau du matériel car la vitesse est importante et
+la fréquence d'usage est haute. L'usages de caches aide la vitesse:
+
+TLB (Translation lookaside buffer)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Une mémoire associatif («cache»), dont le but est d'éviter la conversion d'un
+adresse virtuel à un adresse physique. Ceci permet d'effectuer un seul accès
+à la mémoire (on accède directement le cadre; l'accès aux caches ne compte
+pas) au lieu de deux ou plus.
+
+Champs de la TLB:
+
++-------+--------------+----------+------------+------------+
+| Valid | Virtual Page | Modified | Protection | Page frame |
++-------+--------------+----------+------------+------------+
+
+Couplé avec le **cache opération**, le cache des pages elle mêmes, on réduit
+le nombre d'accès à la mémoire à 0 pour les pages dans le cache.
+
+
+
+Algorithmes de remplacement des pages
+`````````````````````````````````````
+
+Optimale
+~~~~~~~~
+
+pas réalisable ... utile pour comparer les résultats des vrais algorithmes.
+
+
+NRU (Not recently used)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Cet algorithme utilise deux bits: R(éférencée) et M(odifiée), donc il y-a 
+quatre états possibles à considérer pour les pages:
+
+1. `00`: page non réferencée et non modifiée
+
+2. `01`: non réf, mais modifiée
+
+3. `10`: réf, mais non modifiée
+
+4. `11`: réf et modifiée
+
+...
+
+Dès d'un défaut de pages l'algorithme choisi une page aléatoire dans la
+catégorie plus haute possible pour enlever. Si une page de catégorie 3 et une
+de catégorie 2 existent, celle de cat 3 est enlevée.
+
+
+FIFO
+~~~~
+
+First in first out ...
+
+
+Horloge
+~~~~~~~
+
+...
+
+
+LRU (Least recently used)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+...
+
+
+Vieillissement
+~~~~~~~~~~~~~~
+
+...
+
+
+
+
+.. _synchronisation:
+
+Synchronisation
+===============
+
+La synchronisation est cool!!
+
+
+
+
