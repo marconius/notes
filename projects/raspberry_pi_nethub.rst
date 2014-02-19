@@ -54,6 +54,8 @@ later.
 
 That was painless ... as easy as Pi ... ha   ha   ha  ...  :|
 
+In order to make mounting more robust, consider setting up and exploiting a
+persistent naming rule for udev
 
 
 3. Init Stuffs
@@ -158,9 +160,12 @@ Done!
 6. Connecting from PS3
 ----------------------
 
+Set up a DLNA server:::
+
     sudo apt-get mediatomb 
 
-then configured `/etc/mediatomb/config.xml`
+then configure it `/etc/mediatomb/config.xml`
+
 
 
 
@@ -168,19 +173,38 @@ then configured `/etc/mediatomb/config.xml`
 7. Sharing printers
 -------------------
 
-TODO!
+Set up a print server with cups:::
+
+    cupsctl --share-printers
 
 
 
 
-8. What's next?
+8. Bittorrent client
+--------------------
+
+Because this project will not be accessed from a desktop computer, it would be 
+nice to offer some sort of Thin client access to a bittorrent client ...
+
+... Deluge Deamon (deluged), deluge-console, and deluge-web anc help us out with
+this, even though, the Web-UI is not even close to compatible with the PS3 web
+browser. The other problem is finding a source for torrent files that doesn't
+involve being shot through a roller coaster of nasty pop-ups and javascript
+alerts! the best way around this is to supply deluge with a direct url to the
+torrent file. So far I only found 1337x.org that serves torrent files through
+torrecache.net. torrecache.net has an API!
+
+
+
+
+9. What's next?
 ---------------
 
 * maybe freeNAS?
 
 * make a guest or public user instead of having to know pi's login
 
-* a power button would be nice
+* a power (or at least shutdown) button
 
 
 .. _NOOBS: http://www.raspberrypi.org/downloads
