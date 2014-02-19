@@ -2,6 +2,28 @@
 INF1130 - Mathématiques pour informaticien
 ==========================================
 
+-------
+Logique
+-------
+
+Équivalences
+------------
+
+.. math::
+        
+    p ∧ p \iff p
+    ...
+
+les lois de Morgan. La troisi'eme dans cette liste est tr'es importante
+
+.. math::
+
+    ¬(p ∧ q) \iff ¬p ∨ q \\
+    ¬(p ∨ q) \iff ¬p ∧ q \\
+    p \implies q \iff ¬p ∨ q \\
+    p  \implies q \iff ¬p \implies ¬q
+
+
 ---------
 Fonctions
 ---------
@@ -11,7 +33,7 @@ F : A -> B est injective <=> :math:`f(a_1) = f(a_2) \rightarrow a_1 = a_2`
 F : A -> B est injective <=> :math:`\forall b \in B, \exists a \in A : b = f(a)`
 
 -----------------------
-Compléxité Asymptotique
+Complexité Asymptotique
 -----------------------
 
 .. math::

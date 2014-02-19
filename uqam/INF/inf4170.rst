@@ -1,0 +1,53 @@
+======================================
+INF4170 - Architecture des ordinateurs
+======================================
+
+------------
+Introduction
+------------
+
+
+Les concepts clés
+=================
+
+**classes d'ordinateurs** (bureau, serveur, embarqué)
+
+la nécessité de **performance** implique des avancements. Au niveau du matériel : rapidité E/S, éfficacité d'exécution, ...)
+
+Composants d'un système: **processeur** exécute des instructions; **logiciel** (sys exploitation, compilateur); **assembleur** compile **langage d'assemblage** en séries de bits (niveau entre logiciel et processeur)
+
+**Architecture de Von Neumann** avec entrée et sorti illimitées composé de unité d3'arithmétique logique (UAL), mécanisme d'entrée, mécanisme de sortie, mémoire, chemin de données, contrôleur
+
+Composants physiques: carte mère, processeur ( ...)
+
+**Architecture** : spécifications pour établir voie de communication entre du matériel et du logiciel (de très bas niveau comme langage d'assemblage)
+
+**Organisation** : implémentation de l'architecture
+
+
+--------------
+MIPS (32 bits)
+--------------
+
+Une architecture qui décrit un ordinateur RISC (au lieu d'un CISC) des anées 80.
+
+Registres
+---------
+
+Des cases de mémoire intégrée dans le circuit du processeur ... implique beaucoup plus vite que toute autre mémoire dans l'ordinateur.
+
+Il y-a 32 registres dans MIPS
+
+
+
+
+
+
+---------
+Glossaire
+---------
+
+* RISC: reduced instruction set computing
+
+* CISC: complex instruction set computing
+
