@@ -22,6 +22,7 @@ Contents:
    uqam/INF/inf3105
    uqam/INF/inf3135
    uqam/INF/inf3172
+   uqam/INF/inf4170
    uqam/INF/inm5151
    uqam/INF/inf5153
    uqam/LICENCE
