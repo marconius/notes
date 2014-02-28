@@ -451,26 +451,42 @@ Définitions
 ```````````
 
 * **Graphe orientée**: les arêtes ont une direction
+
 * Graphe orientée : arêtes ont aucun direction
+
 * **Sous-graphe** : :math:`G' = (V',E') : V' \subseteq V, E' \text{ est 
   consistante avec } V'`
+
 * **Chemin** : ensemble d'arêtes entre deux sommets (ex: :math:`\{ E_{1}, 
   E_{1}, E_{1}\}`)
+
 * **longueur de chemin** : nombre d'arêtes entre deux sommets
+
 * **cycle** :
+
     * une graphe **cyclique** contient au moins un cycle, si non elle est ...
+
     * une graphe **acyclique**
+
 * graphe **connexe** : quand il y a au moins un chemin entre tout sommet et 
   tout autre sommet. Les arbres sont un exemple de graphes connexes
+
 * graphe **fortement connexe** : une graphe orienté et connexe
+
 * graphe **fortement non-connexe** : une graphe orienté non-connexe. Elle est 
   composé de *composantes fortement connexes*.
+
 * une **étiquette** démarque une caractèristique d'un arête (ex. coût, poids)
+
 * le **degré** d'un sommet est le nombre d'arêtes qui y rentrent. Pour les 
   graphes orientés, on parle aussi du **degré entrant** et **degré sortant**.
   Notation: deg(N) ou degin(N) ou degout(N) = n
+
 * **forêt** : un enseble d'arbres. ex: une graphe non-connexe.
+
 * Dans ce cours la cardinalité de V est noté `n` et celle de E `m`
+
+
 
 Représentations
 ```````````````
