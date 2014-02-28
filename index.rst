@@ -41,8 +41,10 @@ Notes de cours
    uqam/INF/inf3135
    uqam/INF/inf3172
    uqam/INF/inf4170
+   uqam/INF/inf4230
    uqam/INF/inm5151
    uqam/INF/inf5153
+   uqam/INF/inf6150
    uqam/LICENCE
 
 
