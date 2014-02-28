@@ -93,14 +93,14 @@ Opérateurs
 Les opérateurs peuvent être surchargés. ex:
 
 ::
+    
+    Element NomClasse::operator[](int i) {
+      return tableau[i];
+    }
 
-      Element NomClasse::operator[](int i) {
-        return tableau[i];
-      }
-
-NB: ``friend`` : une fonction membre qui est en dehors de la porté de la 
+NB: ``friend`` demarque une fonction membre qui est en dehors de la porté de la 
 classe, mais a accès à ses membres privés ([STRA]_ p.278). Il est préferable de
-déclarer les opérateurs d'E/S comme des ``friend``s.
+déclarer les opérateurs d'E/S comme des ``friend``'s.
 
 Détails
 =======
