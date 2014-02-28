@@ -1,0 +1,64 @@
+===========================================================
+INF6150 - Génie logiciel: conduite de projets informatiques
+===========================================================
+
+------------------------
+Le projet (Introduction)
+------------------------
+
+«Le projet change la façon qu'une organisation fonctionne»
+
+éléments d'un projet
+--------------------
+
+* taux horaire (ex. 90$/heure personne au Québec)
+
+* mandataire : le bénéficier du projet ...
+
+* Porté : les specs / fonctionnalités ...
+
+* Budget
+
+* Échéancier: ... jalons (milestones)
+
+* Coût réel: coût mésuré ... suivi des coûts peut aider a voir si projet n'est pas en voie de dépasser le budget
+
+La matrice des leviers: qu'est-ce qui est stable, moyen ou souple: portée, coût, échéancier
+
+PMBOK Guide
+-----------
+
+Qu'est-ce qu'il y a a gérer dans un projet?
+
+Quelles sont les rôles à remplir
+
+...
+
+comment quantifier la portée objectivement? le `point de fonction`_
+
+.. _`point de fonction` : http://fr.wikipedia.org/wiki/Point_de_Fonction
+
+
+
+-----
+PMBOK
+-----
+
+Démarrage
+---------
+
+...
+
+Planification
+-------------
+
+...
+
+Exécution
+---------
+
+....
+
+... reprise sur cycle de vie et méthode de développement (cascade, itérative, incrémental ...) voir inf5151 ou inf5153
+
+
