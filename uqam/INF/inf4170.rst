@@ -39,13 +39,196 @@ Des cases de mémoire intégrée dans le circuit du processeur ... implique beau
 Il y-a 32 registres dans MIPS
 
 
+CPU à un cycle
+==============
+
+...
 
 
 
+CPU multi-cycles
+================
 
----------
+...
+
+
+
+CPU pipeline
+============
+
+les pipelines: IF, ID, EX (éxecute), MEM (mémoire), WB (Write back)
+
+les aléas:
+
+* structurelle: pas pour MIPS
+
+* donées: si un instruction à besoin de données qui ne sont pas encore disponibles. Solutions: forwarding
+
+* contrôle: si on ne peut pas savoir l'adresse de la prochaine instruction. Sol: prediction (statique, dynamique). .. on ne voit pas estimation dyn dans ce cours. Si la prediction est incorrecte il faut flusher (insert des boulles)
+
+
+
+La mémoire
+==========
+
+
+Localité
+--------
+
+
+Il y a deux types de localité
+
+
+localité spatiale
+`````````````````
+
+les éléments qui sont proche de l'élément référencé **ont un forte chanche** d'aussi être référencés
+
+ex: structures: si on utilise un membre d'un structure -> nbonne chance qu.on va utiliser les autres aussi
+
+ex: tableau: 
+
+localité temporelle
+```````````````````
+
+On fait la supposition que si un élément est référencé il y a une bonne chacne qu'il soit référencé plus qu'un foi
+
+ex: variables
+
+ex: les boucles: on réference les mêmes fonctions
+
+
+
+hiéarchie de mémoire
+--------------------
+
+L'organisation implément plusieurs couches de mémoire de la plus vite à plus lente. Ça crée l'illusion qu'il n'ya qu'une mémoire très rapide.
+
+ex vieux: régistre <-> RAM
+
+ex moderne: registres (plus vite) <-> cache ou mémoir intermédiaire (vite) <-> RAM ou mémoire centrale (moins vite)
+
+ex moderne 2: registres <-> cache L2 <-> caceh L1 <-> RAM 
+
+Cache est beacoup plus vite que RAM parce que chemin plus court envers le CPU et plus petite
+
+contenu d'une couche est sous ensemble de contenu de la couche supérieure (ex:
+
+
+
+Cache
+-----
+
+contient des blocks (ex: 4 mots)
+
+**Hit** si bloc est dans la cache ou **MISS** si non ... si Miss, il faut aller chercher dans la couche superieur
+
+Hit rate c'est le taux de succès ... Miss rate ...
+
+Hit time ...
+
+Miss penalty ...
+
+3 types de cache: ...
+
+
+Direct-mapped cache
+```````````````````
+
+(adresse du bloc) % (nombre de blocs) 
+
+... on ne conte pas les bits non-signicatifs dans le calcule
+
+**index** de la table du cache (fait partie de l'adresse en couche supérieure) ...
+
+**tag** ... (si diférent de ce qu'on trouve présentement à l'index -> miss) ...
+
+un bit de validité (de la valeur) pour chaque entrée. ex: valide si on vient de copier la valeur dans le cache ... context switch met tout valeurs à non valide. Si non-valide -> `miss`
+
+
+exercise : dans un cache de 8 blocs (index de trois bits) de 1 mot (4o) ... lw à 0x10000058
+
+1. calculer index: on utilise les trois bits après 00 ... 58(16) = 010`1 10`00(2) ...  = **110**
+
+2. calculer tag: le restant de la partie binaire donc `010`1 1000 = **0x1000 00{010(2)}**
+
+3. si hit, ok; si miss, chercher valeur en couche supérieure et ecrire tag
+
+
+note à propos les **Blocs**: choix de bloc est important .... blocs plus petits -> plus de blocs -> mieux pour localité temporelle (?)
+
+**masquage**: sert à trouver le premier mot dans le bloc ....
+
+exercise: dans cache de 4 blocs de 2 mots (on mets les valeurs des 2 mots consecutifs) lw 0x1000 0060:
+
+1. calculer index: 0x60 = 0110 0**000**, masquer les trois bits à droite laisse 011`0 0` = **00**
+
+2. calculer tag ...
+
+3. quel mot on prend? premier bit a guache (dans ce cas?) de la partie masqué `0`00 = **premier mot**
+
+exercies: dans cache de 4 blocs de 4 mots, lw 0x1000 0010
+
+1. index: 0001 *0000* (masque 4) ... index = 01
+
+2. tag: ...
+
+3. si miss ... insère les quattre mots à 01. Si HIT, première deux bits de la portion masquée détermine quel mot prendre
+
+
+
+Écriture
+~~~~~~~~
+
+write-through: Quand on écrit dans une mémoire on écrit dans tous les couches
+
+write-back: On écrit la valeur dans la mém intermedière puis on **écrit aux couche plus hautes seulement quand il y'a un miss et dirty bit** ... utilise le `dirty bit` pour nous dire si
+
+exemple: 4 blocs de 4 mots avec write-back: 1. lw 0x1000001C et 2. sw 0x1000 0014   0x7777 4444 et 3. lw 0x1000 0054
+
+1. lw ...
+
+2. sw index; tag = 00`01` 0100 = 01; tag = 0x1000 00{00(2)} (index et tag corespondent donc HIT)
+
+3. sw: mettre dirty bit de 01 à 1
+
+4. lw2 index et tag = 01`01` 0100 = 01; 0x1000 00{00(2)} (MISS avec dirty bit 1)
+
+5. write-back: ecrit les quatre mots en mém de couche supérieure
+
+exemple de representation de la table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+==  =====   =====   ================  ===========   ===========   ===========   ===========
+lx  valid   dirty   tag               mot1 (0000)   mot2 (0100)   mot3 (1000)   mot4 (1100)
+==  =====   =====   ================  ===========   ===========   ===========   ===========
+00  0
+01  1       1       0x1000 00{00(2)}  0x0ALE 83R0   0x7777 4444   0x1244 4321   0x7615 A7ED
+10  0
+11  0
+==  =====   =====   ================  ===========   ===========   ===========   ===========
+
+
+
+Fully-associative Cache
+```````````````````````
+
+les blocs peuvent être n'importe où dans la cache ... l'**adresse au complet** comme index
+
+approximation du LRU algo imployé (voir SE)
+
+exemple: 1 bloc (lazy!) de 2 mots avec write-through: lw 0x1000 004C; sw 0x1000 0x1000 0030
+
+1. lw masque: 4C = 0100 1*100* = 48 ... donc on met les deux blocs partant de 0x1000 1000 dans cache ...
+
+2. note: il faut se souvenir de l'ordre d'utilisation des blocs
+
+3. sw masquer = 0011 0`000` = 30 -> MISS alors on enlève le bloc le moins recenement utilisé (premier bloc) et on met les 2 mots qui commencent à 0x1000 0030 ... puis on écrit dans les méms supérieurs
+
+
+
 Glossaire
----------
+=========
 
 * RISC: reduced instruction set computing
 
